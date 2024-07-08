@@ -34,11 +34,11 @@ const Header = () => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_KEY}&libraries=services&autoload=false`;
     script.async = true;
 
     script.onload = () => {
-      kakao.maps.load(() => {
+      window.kakao.maps.load(() => {
         console.log('Kakao Maps API loaded successfully');
         setKakaoLoaded(true);
       });
@@ -63,15 +63,17 @@ const Header = () => {
       return;
     }
 
-    const { kakao } = window;
-    const geocoder = new kakao.maps.services.Geocoder();
-    const coords = new kakao.maps.LatLng(location.latitude, location.longitude);
+    const geocoder = new window.kakao.maps.services.Geocoder();
+    const coords = new window.kakao.maps.LatLng(
+      location.latitude,
+      location.longitude
+    );
 
     geocoder.coord2RegionCode(
       coords.getLng(),
       coords.getLat(),
       (result, status) => {
-        if (status === kakao.maps.services.Status.OK) {
+        if (status === window.kakao.maps.services.Status.OK) {
           const region =
             result.find((item) => item.region_type === 'H') || result[0];
           setRegionFirstName(region.region_1depth_name);
