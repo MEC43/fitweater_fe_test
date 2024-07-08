@@ -25,7 +25,8 @@ function PostWritePage() {
   } = useVerifyPost();
   const { setNewPostId } = usePostData();
   const { userInfo } = useLoginInfoStore();
-  const RegionFirstName = localStorage.getItem('regionFirstName').slice(0, 2);
+  const regionFirstName = localStorage.getItem('regionFirstName');
+  const RegionFirstName = regionFirstName ? regionFirstName.slice(0, 2) : null;
   const userId = userInfo.userid;
   const username = userInfo.username;
   console.log('현재 유저아이디', userId);
