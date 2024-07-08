@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import style from '../css/Header.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import useFetchStore from '../store/fetchStore';
 import Nav from './Nav';
 
@@ -18,48 +18,35 @@ const Header = () => {
   const [kakaoLoaded, setKakaoLoaded] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setNavOpen(window.innerWidth >= 909);
-    };
-
+    const handleResize = () => setNavOpen(window.innerWidth >= 909);
     window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    fetchLocation();
-  }, [fetchLocation]);
 
   useEffect(() => {
     const script = document.createElement('script');
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`;
     script.async = true;
-
     script.onload = () => {
       window.kakao.maps.load(() => {
         console.log('Kakao Maps API loaded successfully');
         setKakaoLoaded(true);
       });
     };
-
     document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
+    return () => document.head.removeChild(script);
   }, []);
 
-  useEffect(() => {
-    if (kakaoLoaded && location.latitude && location.longitude) {
-      regionName();
-    }
-  }, [kakaoLoaded, location]);
-
-  const regionName = () => {
-    if (!window.kakao || !window.kakao.maps) {
-      console.error('Kakao Maps API is not loaded');
+  const regionName = useCallback(() => {
+    if (
+      !window.kakao ||
+      !window.kakao.maps ||
+      !location.latitude ||
+      !location.longitude
+    ) {
+      console.error(
+        'Kakao Maps API is not loaded or location is not available'
+      );
       return;
     }
 
@@ -84,21 +71,34 @@ const Header = () => {
           localStorage.setItem('regionSecondName', region.region_2depth_name);
           localStorage.setItem('regionthirdName', region.region_3depth_name);
 
-          console.log('Region information successfully retrieved and stored');
+          console.log(
+            'Region information retrieved:',
+            region.region_1depth_name,
+            region.region_2depth_name,
+            region.region_3depth_name
+          );
         } else {
           console.error('Failed to retrieve region information', status);
         }
       }
     );
-  };
+  }, [location, setRegionFirstName, setRegionSecondName]);
 
-  const refresh = () => {
-    console.log('새로고침 클릭');
-    fetchLocation();
+  useEffect(() => {
+    if (kakaoLoaded) {
+      fetchLocation();
+    }
+  }, [kakaoLoaded, fetchLocation]);
+
+  useEffect(() => {
     if (kakaoLoaded && location.latitude && location.longitude) {
       regionName();
     }
-    console.log('지역', regionFirstName, regionSecondName, regionthirdName);
+  }, [kakaoLoaded, location, regionName]);
+
+  const refresh = () => {
+    console.log('Refreshing location and region information');
+    fetchLocation();
   };
 
   return (
