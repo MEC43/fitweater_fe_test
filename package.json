@@ -39,7 +39,7 @@
     "last 1 firefox version",
     "last 1 safari version"
   ],
-  "homepage": "https://MEC43.github.io/fitweater_fe_test",
+  "homepage": "https://master--fw3.netlify.app/",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
