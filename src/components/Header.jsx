@@ -43,7 +43,7 @@ const Header = () => {
   useEffect(() => {
     const loadKakaoMap = () => {
       if (window.kakao && window.kakao.maps) {
-        initializeMap();
+        regionName();
       } else {
         setTimeout(loadKakaoMap, 300);
       }
