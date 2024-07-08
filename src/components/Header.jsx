@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import style from '../css/Header.module.css';
 import { useEffect, useState } from 'react';
 import useFetchStore from '../store/fetchStore';
@@ -39,18 +40,6 @@ const Header = () => {
   useEffect(() => {
     fetchLocation();
   }, [fetchLocation]);
-
-  useEffect(() => {
-    const loadKakaoMap = () => {
-      if (window.kakao && window.kakao.maps) {
-        regionName();
-      } else {
-        setTimeout(loadKakaoMap, 300);
-      }
-    };
-
-    loadKakaoMap();
-  }, [location]);
 
   const regionName = () => {
     const checkKakaoAPI = () => {
@@ -142,7 +131,7 @@ const Header = () => {
 
   useEffect(() => {
     regionName();
-  }, [location, setRegionFirstName, regionName, setRegionSecondName]);
+  }, [location, setRegionFirstName, setRegionSecondName]);
 
   const refresh = () => {
     console.log('새로고침 클릭');
