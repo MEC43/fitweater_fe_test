@@ -1,0 +1,18 @@
+.commuCollCmnt {
+  background-color: var(--white);
+  padding-top: 7.5rem;
+}
+.cmntListCon {
+  width: calc(100% - 2rem);
+  margin: auto;
+}
+
+.loadingMsg {
+  text-align: center;
+  padding: 10rem 5rem;
+  font-size: 0.8rem;
+}
+
+.myTotal {
+  padding: 1rem 1rem 0;
+}

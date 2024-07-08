@@ -1,0 +1,26 @@
+.talkBox {
+  max-width: 450px;
+  width: calc(100% - 2rem);
+  margin: 16px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 15%);
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+}
+.talkBox::before {
+  content: "";
+  border-top: 15px solid rgba(255, 255, 255, 0.8);
+  border-right: 15px solid transparent;
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.title {
+  color: var(--grey-600);
+  margin-bottom: 8px;
+}
+.talk {
+  color: var(--primary-variant-color);
+}

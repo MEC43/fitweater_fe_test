@@ -1,0 +1,12 @@
+.mypageTitle {
+  padding: 4rem 1rem 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--primary-color);
+  width: 100%;
+  color: var(--white);
+}
+
+.mypageMain button {
+  cursor: pointer;
+}

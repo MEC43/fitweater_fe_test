@@ -1,0 +1,22 @@
+.weatherCate,
+.coordiCate {
+  border-radius: 99px 99px 99px 0;
+  padding: 0.6rem 0.8rem;
+  display: none;
+  font-size: 0.65rem;
+}
+
+.weatherCate {
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--grey-600);
+}
+.coordiCate {
+  border: 1px solid var(--accnet-color);
+  background-color: var(--accnet-color);
+  color: var(--white);
+}
+.weatherCate.on,
+.coordiCate.on {
+  display: inline-block;
+}

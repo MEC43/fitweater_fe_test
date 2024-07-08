@@ -1,0 +1,14 @@
+.talkListCon {
+  display: flex;
+  flex-direction: column;
+}
+
+.myTotal {
+  padding: 1rem 1rem 0;
+}
+
+.loadingMsg {
+  text-align: center;
+  padding: 10rem 5rem;
+  font-size: 0.8rem;
+}

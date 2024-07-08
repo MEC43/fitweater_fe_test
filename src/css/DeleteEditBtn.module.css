@@ -1,0 +1,14 @@
+.deleteEditBtn {
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 50rem;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+  transition: background-color 0.3s;
+}
+.deleteEditBtn:hover {
+  background-color: var(--primary-color);
+}

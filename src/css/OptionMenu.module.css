@@ -1,0 +1,43 @@
+.optionMenu {
+  visibility: hidden;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background-color: var(--white);
+  border: 1px solid var(--grey-200);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+.optionMenu.on {
+  transform: translateX(-50%) translateY(0);
+  visibility: visible;
+}
+
+.optionMenu button {
+  padding-block: 1.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: var(--grey-600);
+  transition: 0.3s;
+}
+.optionMenu button:first-of-type::after {
+  content: '';
+  height: 1px;
+  width: calc(100% - 2rem);
+  background-color: var(--grey-200);
+  position: absolute;
+  bottom: 50%;
+  left: 1rem;
+}
+
+.optionMenu button:hover {
+  color: var(--primary-variant-color);
+}

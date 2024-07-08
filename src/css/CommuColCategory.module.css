@@ -1,0 +1,45 @@
+.commuCollCate {
+  position: relative;
+}
+.commuCollCateHd {
+  padding: 4rem 1rem 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+
+  position: absolute;
+  width: 100%;
+}
+
+.commuCollCateHd span {
+  color: var(--white);
+}
+.commuCollCateHd .buttonCon {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.commuCollCateHd a {
+  width: 100%;
+  border: 1px solid var(--white);
+  padding: 0.8rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 999px;
+  cursor: pointer;
+  /* transition: background-color 0.3s, color 0.3s; */
+  text-align: center;
+}
+.commuCollCateHd a.on,
+.commuCollCateHd a:hover {
+  background-color: var(--white);
+  color: var(--primary-variant-color);
+  font-weight: bold;
+}

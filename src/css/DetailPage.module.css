@@ -1,0 +1,4 @@
+.detailPage {
+  width: calc(100% - 2rem);
+  padding-top: 5rem;
+}

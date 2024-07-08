@@ -1,0 +1,49 @@
+.present {
+  width: calc(100% - 2rem);
+  margin: 48px auto 0 auto;
+  padding: 32px 0;
+}
+
+.temperature {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.temperature p {
+  font-size: 64px;
+}
+
+.minmax {
+  display: inline-block;
+}
+
+.minmax span:nth-of-type(1),
+.minmax span:nth-of-type(3) {
+  color: var(--grey-600);
+  padding-right: 4px;
+}
+
+.minmax span:nth-of-type(1),
+.minmax span:nth-of-type(2) {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.others {
+  /* border: 1px solid orange; */
+  display: flex;
+  justify-content: center;
+  gap: 50.5px;
+}
+
+.others span {
+  color: var(--grey-600);
+}
+
+.con {
+  /* border: 1px solid red; */
+  text-align: center;
+}

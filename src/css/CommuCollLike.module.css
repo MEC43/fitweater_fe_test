@@ -1,0 +1,19 @@
+.commuCollLike {
+  background-color: var(--white);
+  padding-top: 7.5rem;
+}
+
+.likeListCon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.loadingMsg {
+  text-align: center;
+  padding: 10rem 5rem;
+  font-size: 0.8rem;
+}
+
+.myTotal {
+  padding: 1rem 1rem 0;
+}

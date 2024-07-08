@@ -1,0 +1,71 @@
+.page {
+  padding: 0 20px 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mystyleTitle {
+  font-size: 16px;
+  color: #262626;
+  margin: 30px 0 17px 0;
+  text-align: center;
+}
+
+.mystyleBody {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.mystyleBody_span {
+  display: block;
+  margin-top: 3px;
+}
+
+.mystyleWrap {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.page button {
+  flex: 1;
+  margin: 5px;
+  padding: 8px 18px;
+  border: 1px solid #e2e0c0;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #262626;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.page button.selected {
+  background-color: #376dd2;
+  color: #fff;
+  border-color: #376dd2;
+}
+
+.page .bottomButton {
+  width: 100%;
+  border: none;
+  font-weight: 700;
+  background-color: #376dd2;
+  border-radius: 64px;
+  color: white;
+  margin: 40px 0 16px 0;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page .bottomButton:disabled {
+  background-color: #dadada;
+  color: white;
+}

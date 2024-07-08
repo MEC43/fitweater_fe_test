@@ -1,0 +1,114 @@
+.page {
+  padding: 0 20px 15px 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 70px 0 60px 0;
+}
+
+.logo img {
+  width: 40%;
+  height: auto;
+}
+
+.titleWrap {
+  text-align: center;
+  color: #262626;
+}
+
+.contentWrap {
+  margin-top: 26px;
+}
+
+.autologin {
+  margin: 20px 0 30px 0;
+}
+
+.inputTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.inputWrap {
+  display: flex;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+  background-color: white;
+  border: 1px solid #e2e0c0;
+}
+
+.inputWrap:focus-within {
+  border: 1px solid #376dd2;
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  border: none;
+  height: 17px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input::placeholder {
+  color: #dadada;
+  font-family: 'S-CoreDream-3Light';
+}
+
+.errorMessageWrap {
+  margin-top: 8px;
+  color: #ef0000;
+  font-size: 12px;
+}
+
+.bottomButton {
+  width: 100%;
+  height: 48px;
+  border: none;
+  font-weight: 700;
+  background-color: #376dd2;
+  border-radius: 64px;
+  color: white;
+  margin: 40px 0 16px 0;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bottomButton:disabled {
+  background-color: #dadada;
+  color: white;
+}
+
+.socialButton {
+  width: 100%;
+  height: 48px;
+  border: none;
+  font-weight: 700;
+  background-color: #ffe072;
+  border-radius: 64px;
+  color: color;
+  margin-bottom: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.signup {
+  margin: 15px 0 30px 0;
+  text-align: center;
+}
+
+.signupButton {
+  display: inline-block;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  margin-left: 15px;
+}

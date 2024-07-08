@@ -1,0 +1,28 @@
+.fashionFeedPage {
+  padding: 8rem 0;
+  background-color: var(--white);
+  /* min-height: 100vh; */
+}
+.fashionFeedPage .fshFeedTitle {
+  color: var(--grey-600);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 2rem 0.8rem 1rem;
+}
+
+.fshFeedCon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.fshFeedCon li {
+  border: 1px solid blue;
+  height: 200px;
+  cursor: pointer;
+}
+
+.embedded {
+  width: 100%;
+  height: 100vh;
+}

@@ -1,0 +1,22 @@
+.commuListCon {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+}
+
+/* 중요: 로딩 인디케이터를 위한 컨테이너 스타일 */
+.loadingContainer {
+  padding-block: 1.5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* 모든 게시물을 불러왔을 때 메시지 스타일 */
+.endMessage {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  font-style: italic;
+  color: #888;
+}

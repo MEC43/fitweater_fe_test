@@ -1,0 +1,86 @@
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modal_content {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  position: relative;
+  transform: translateY(0);
+}
+
+.modal_header {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 0 8px;
+}
+
+/* x 버튼인데 아마 사용 안할듯 */
+/* .close_button {
+  background: none;
+  border: none;
+  font-size: 17px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+} */
+
+.modal_body {
+  margin-bottom: 20px;
+}
+
+.all_checkbox {
+  border: solid 1px #cccccc;
+  border-radius: 10px;
+  padding: 10px 10px 10px 0;
+  display: block;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.all_checkbox:hover,
+.all_checkbox:focus,
+.all_checkbox:active {
+  border-color: #000000;
+}
+
+.modal_checkbox {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.all_checkbox > input,
+.modal_checkbox > input {
+  margin: 1px 8px 0 15px;
+}
+
+.submit_button {
+  width: 100%;
+  padding: 10px;
+  background-color: #376dd2;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.submit_button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

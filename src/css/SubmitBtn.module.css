@@ -1,0 +1,14 @@
+.submitBtn {
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-radius: 50rem;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--grey-200);
+  color: var(--white);
+  transition: 0.3s;
+}
+.submitBtn:hover {
+  background-color: var(--primary-variant-color);
+}

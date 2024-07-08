@@ -1,0 +1,136 @@
+.header2Main {
+  /* border: 2px solid red; */
+  background-color: var(--primary-color);
+  padding-top: 3rem;
+  /* height: 6rem; */
+  /* position: relative; */
+  border-radius: 0 0 1rem 1rem;
+  /* overflow: hidden; */
+}
+
+.header2Main .h2Con {
+  height: 48px;
+  width: 100%;
+  /* border: 1px solid darkcyan; */
+  position: relative;
+  /* position: absolute; */
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: space-between;
+}
+
+.header2Main h2 {
+  color: var(--white);
+  margin-bottom: 0;
+}
+
+.header2Main .btnCon {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header2Main .btnDate {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var(--white);
+  border-radius: 999px;
+  padding: 0 1rem;
+  color: var(--white);
+  transition: 0.15s;
+}
+
+.header2Main .btnDate:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+
+.header2Main .btnDate.active {
+  background-color: var(--white);
+  font-weight: bolder;
+  color: var(--primary-variant-color);
+}
+
+.header2 {
+  color: var(--white);
+  background-color: var(--primary-color);
+  /* background-color: black; */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  position: relative;
+}
+
+.header2 h2 {
+  color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btnGoBack {
+  /* border: 1px solid red; */
+  /* display: inline-block; */
+  display: flex;
+  cursor: pointer;
+}
+
+.switchCodiView {
+  position: relative;
+  background-color: var(--white);
+  color: var(--grey-600);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  /* overflow: hidden; */
+}
+
+.switchBG {
+  content: "";
+  position: absolute;
+  width: 40px;
+  background-color: var(--primary-color);
+  height: 24px;
+  border-radius: 999px;
+  /* 달력 선택 */
+  left: 2px;
+  transition: 0.15s;
+  /* 갤러리 선택 */
+  /* right: 2px; */
+}
+
+.switchCodiView .switchGallery,
+.switchCodiView .switchCalendar {
+  color: var(--grey-600);
+  /* border: 1px solid red; */
+  width: 40px;
+  text-align: center;
+  padding: 6px 0;
+  position: relative;
+  /* 부모 요소인 .switchCodiView에 대해 상대 위치 지정 */
+  z-index: 1;
+  /* .switchCodiView::after보다 위에 표시 */
+}
+
+.switchCodiView a.active {
+  color: var(--white);
+}
+
+/* == CodiWrite=== */
+.miniTag {
+  box-shadow: inset 0 0 0 1px var(--white);
+  /* 내부 그림자를 이용한 경계선 */
+  line-height: 100%;
+  padding: 4px 8px 4px 9px;
+  border-radius: 1.5rem 1rem 1rem 0 / 1.5rem 1rem 1rem 0;
+}

@@ -1,0 +1,10 @@
+.region {
+  border-radius: 55rem 55rem 55rem 0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.65rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  white-space: nowrap;
+}

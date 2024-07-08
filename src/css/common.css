@@ -1,0 +1,169 @@
+@font-face {
+  font-family: 'LeeSeoyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GangwonEduHyeonokT_OTFMediumA';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 
+@font-face {
+  font-family: 'SlowSlow';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'S-CoreDream-7Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'S-CoreDream-5Medium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* 컬러 변수 등록 */
+  --primary-color: #8aaae5;
+  --primary-variant-color: #376dd2;
+  --secondary-color: #ffe072;
+  --accnet-color: #fc7167;
+  --white: #fff;
+  --grey-100: #eee;
+  --grey-200: #ccc;
+  --grey-400: #999;
+  --grey-600: #666;
+  --grey-800: #333;
+  --black: #000;
+  --modal-bg: rgba(0, 0, 0, 0.7);
+
+  /* 폰트 기본값 */
+  font-family: 'S-CoreDream-3Light';
+  font-size: 16px;
+  /*1rem =16px */
+  color: var(--black);
+}
+
+/* font 클래스 */
+.fontHead2 {
+  font-family: 'GmarketSansBold';
+  font-size: 1.25rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+.fontHead3 {
+  font-family: 'GmarketSansBold';
+  font-size: 0.75rem;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+
+.fontDecorate {
+  font-family: "LeeSeoyun";
+  font-size: 1.25rem;
+  line-height: 110%;
+  letter-spacing: 0;
+}
+
+.fontTitleXL {
+  font-family: 'S-CoreDream-5Medium';
+  font-size: 1rem;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.fontTitleL {
+  font-family: 'S-CoreDream-5Medium';
+  font-size: 0.875rem;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.fontTitleM {
+  font-family: 'S-CoreDream-5Medium';
+  font-size: 0.75rem;
+  line-height: 120%;
+  letter-spacing: -4%;
+}
+
+.fontTitleS {
+  font-family: 'S-CoreDream-5Medium';
+  font-size: 0.625rem;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.fontTitleXS {
+  font-family: 'S-CoreDream-5Medium';
+  font-size: 0.5rem;
+  line-height: 120%;
+  letter-spacing: -4%;
+}
+
+.fontBodyL {
+  font-family: 'S-CoreDream-3Light';
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.fontBodyM {
+  font-family: 'S-CoreDream-3Light';
+  font-size: 0.75rem;
+  line-height: 120%;
+  letter-spacing: -4%;
+}
+
+.fontBodyS {
+  font-family: 'S-CoreDream-3Light';
+  font-size: 0.625rem;
+  line-height: 120%;
+  letter-spacing: -4%;
+}
+
+.mw {
+  width: 100%;
+  max-width: 720px;
+  min-width: 320px;
+  margin: auto;
+}
+
+body {
+  background-color: var(--grey-100);
+  position: relative;
+}

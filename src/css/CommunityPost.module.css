@@ -1,0 +1,69 @@
+.comuList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+.comuList:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.comuList::after {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 1px;
+  width: calc(100% - 1rem);
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0;
+}
+
+.comuList strong {
+  width: 100%;
+}
+
+.postInfo {
+  color: var(--grey-600);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.postInfo > span,
+.postInfo > div:first-of-type {
+  position: relative;
+}
+.postInfo > span::after,
+.postInfo > div:first-of-type::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 0.8rem;
+  width: 1px;
+  right: -0.5rem;
+}
+.commentIcon,
+.likeIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.commentIcon i {
+  transform: scaleX(-1) scaleY(1.2);
+}
+.postImg {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+.postImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

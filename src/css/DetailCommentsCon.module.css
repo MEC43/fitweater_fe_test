@@ -1,0 +1,41 @@
+.commentsCon {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.commentWrite {
+  padding-block: 1rem;
+  position: relative;
+}
+.commentWrite textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem 6rem 3rem 1rem;
+  border-radius: 1rem;
+  outline: none;
+  resize: none;
+  border: 1px solid var(--grey-200);
+}
+.commentWrite textarea::placeholder {
+  color: var(--grey-200);
+}
+
+.cmntErrMsg {
+  color: var(--accnet-color);
+  padding-inline: 0.5rem;
+}
+.commentWrite button {
+  position: absolute;
+  right: 1rem;
+  top: 25%;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--white);
+  border-radius: 50px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.commentWrite button:hover {
+  background-color: var(--primary-variant-color);
+}

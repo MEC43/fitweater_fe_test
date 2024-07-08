@@ -1,0 +1,83 @@
+.coordiReview {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 1px solid var(--grey-100);
+}
+.coordiReview p {
+  text-align: center;
+  width: 100%;
+  padding-block: 1rem;
+  color: var(--grey-800);
+}
+.coordiReview button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid var(--grey-100);
+  cursor: pointer;
+  color: var(--grey-200);
+  transition: 0.3s;
+}
+
+.coordiReview button svg {
+  width: 2rem;
+  height: 2rem;
+  transition: 0.3s;
+}
+.coordiReview button svg path {
+  fill: var(--grey-200);
+  transition: 0.3s;
+}
+.coordiReview .topCount {
+  border-color: var(--primary-variant-color);
+  color: var(--primary-variant-color);
+}
+.coordiReview .topCount svg path {
+  fill: var(--primary-color);
+}
+
+.goodBtn:hover,
+.goodBtn.on {
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+}
+
+.goodBtn.on svg path,
+.goodBtn:hover svg path {
+  fill: var(--white);
+}
+
+.sosoBtn.on,
+.sosoBtn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.sosoBtn.on svg path,
+.sosoBtn:hover svg path {
+  fill: var(--white);
+}
+.badBtn.on,
+.badBtn:hover {
+  background-color: var(--grey-200);
+  color: var(--white);
+}
+.badBtn.on svg path,
+.badBtn:hover svg path {
+  fill: var(--white);
+}
+
+@media (max-width: 360px) {
+  .coordiReview button {
+    width: 5rem;
+    height: 5rem;
+  }
+}

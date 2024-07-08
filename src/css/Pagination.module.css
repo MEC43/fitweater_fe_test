@@ -1,0 +1,25 @@
+.pgnationBtnCon {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 1rem 1rem;
+}
+.pgnationBtnCon button {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-bottom: 3px solid transparent;
+  border-right: 2px solid transparent;
+  transition: color 0.3s;
+}
+.pgnationBtnCon button:hover {
+  color: var(--primary-color);
+}
+.pgnationBtnCon button.on {
+  border-bottom: 2px solid var(--primary-color);
+  border-right: 1px solid var(--primary-color);
+  box-shadow: 1px 3px 5px var(--grey-200);
+  color: var(--primary-variant-color);
+  font-weight: bold;
+}

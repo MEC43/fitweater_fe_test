@@ -1,0 +1,114 @@
+.comment {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.comment:last-of-type {
+  border: none;
+}
+
+.userImg {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.userImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment .userName {
+  font-family: var(--body-medium-font);
+}
+.comment .commentDate {
+  color: var(--grey-600);
+}
+.comment i {
+  padding: 0.3rem 0.8rem;
+  margin-left: auto;
+  cursor: pointer;
+}
+.comment p {
+  width: 100%;
+}
+
+.reCmntBtnCon {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.reCmntSubmitBtn {
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  border-radius: 5rem;
+  border: 1px solid var(--primary-variant-color);
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+  transition: 0.3s;
+}
+.reCmntSubmitBtn:hover {
+  background-color: transparent;
+  color: var(--primary-variant-color);
+}
+
+.reCmntCancelBtn {
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  border-radius: 5rem;
+  border: 1px solid var(--grey-400);
+  background-color: var(--grey-400);
+  color: var(--white);
+  transition: background-color 0.3s, color 0.3s;
+}
+.reCmntCancelBtn:hover {
+  background-color: var(--grey-200);
+  border: 1px solid var(--grey-200);
+}
+.comntRewrite {
+  outline: none;
+  border: 1px solid var(--grey-200);
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.cmntOptionMenu {
+  /* border: 1px solid; */
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+.cmntOptionMenu button {
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  color: var(--grey-400);
+  border-radius: 5rem;
+  transition: 0.3s;
+}
+.cmntOptionMenu button:hover {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* 마이페이지 작성댓글 삭제 버튼 */
+.mypgCmntDelBtn {
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5rem;
+  background-color: var(--grey-100);
+  margin-left: auto;
+  transition: 0.3s;
+}
+.mypgCmntDelBtn:hover {
+  background-color: var(--grey-200);
+}

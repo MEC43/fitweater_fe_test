@@ -1,0 +1,15 @@
+.writeCancelBtn {
+  padding: 0.8rem 1rem;
+  border-radius: 50rem;
+  background-color: var(--white);
+  white-space: nowrap;
+  border: none;
+  color: var(--grey-400);
+  cursor: pointer;
+  box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+.writeCancelBtn:hover {
+  background-color: var(--grey-400);
+  color: var(--white);
+}

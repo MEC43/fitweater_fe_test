@@ -1,0 +1,66 @@
+.titleArea {
+  border-bottom: 1px solid var(--grey-100);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+.titleArea strong {
+  width: 100%;
+  padding-block: 0.5rem;
+}
+
+.titleArea .postInfo {
+  display: flex;
+  gap: 0.8rem;
+  color: var(--grey-600);
+}
+
+.titleArea .like {
+  background-color: var(--grey-100);
+  color: var(--accnet-color);
+  padding: 0.5rem 0.8rem;
+  position: absolute;
+  right: 0.9rem;
+  bottom: 1.5rem;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.like .likeBtn {
+  cursor: pointer;
+  background-image: url(/public/img/icons/common/likeBtn0.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: none;
+  transition: 0.3s;
+}
+
+.like .likeBtn:hover,
+.like .likeBtn.on {
+  background-image: url(/public/img/icons/common/likeBtn1.svg);
+}
+
+.titleArea .option {
+  position: absolute;
+  right: 0;
+}
+.titleArea .option i {
+  cursor: pointer;
+  padding-inline: 0.5rem;
+  transition: 0.3s;
+}
+.titleArea .option i:hover {
+  scale: 1.2;
+}
+
+.titleArea .option i:hover ~ div {
+  bottom: 0;
+}

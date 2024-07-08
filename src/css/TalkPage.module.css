@@ -1,0 +1,24 @@
+.talkPage {
+  background-color: var(--white);
+  padding-top: 7.5rem;
+  min-height: 100vh;
+}
+.writeBtn {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  cursor: pointer;
+  width: 4.3rem;
+  height: 4.3rem;
+  border-radius: 50%;
+  border: 1px solid var(--primary-variant-color);
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+  font-family: var(--body-ligth-font);
+  font-size: 0.75rem;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  transition: 0.3s;
+}
+.writeBtn:hover {
+  transform: scale(1.05);
+}

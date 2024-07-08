@@ -1,0 +1,111 @@
+.profileArea {
+  border-bottom: 1px solid var(--grey-200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pofileImg {
+  overflow: hidden;
+  max-width: 6rem;
+  max-height: 6rem;
+  border-radius: 50%;
+  margin: auto;
+}
+.pofileImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btnCon {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem auto 0;
+}
+.btnCon button {
+  background-color: var(--white);
+  color: var(--grey-600);
+  border-radius: 5rem;
+  padding: 1rem;
+  width: 100%;
+  max-width: 15rem;
+  box-shadow: 4px 4px 8px var(--grey-200);
+  transition: background-color 0.3s, color 0.3s;
+}
+.btnCon button:hover,
+.pofileEdit .btnCon button:first-of-type:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.myPofile,
+.pofileEdit {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  max-width: 33rem;
+  gap: 1.3rem;
+  flex-wrap: wrap;
+}
+
+/* ----- 프로필 영역 ----- */
+
+.myPofile {
+  text-align: center;
+}
+.myPofile > * {
+  width: 100%;
+}
+
+.myPofile span {
+  font-size: 1.3rem;
+}
+
+/* ---- 프로필 수정 영역 ---- */
+
+.pofileEdit > * {
+  width: 100%;
+}
+.pofileEdit label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.pofileEdit label span {
+  width: 100%;
+  color: var(--grey-600);
+}
+
+.pofileEdit input {
+  outline: none;
+  border: 1px solid var(--grey-200);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  padding: 1rem;
+  color: var(--grey-800);
+  width: 100%;
+}
+.pofileEdit label:first-of-type input {
+  width: calc(100% - 8rem);
+}
+.pofileEdit label:first-of-type button {
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+  border-radius: 5rem;
+  padding: 0.8rem 1rem;
+  min-width: 1rem;
+  box-shadow: 4px 4px 8px var(--grey-200);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pofileEdit .btnCon button:first-of-type {
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+}
+.pofileEdit .btnCon button:last-of-type:hover {
+  background-color: var(--grey-600);
+  color: var(--white);
+}

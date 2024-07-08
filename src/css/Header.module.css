@@ -1,0 +1,145 @@
+.hd {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* border: 1px solid darkorange; */
+}
+
+.hd .top {
+  /* width: 100%; */
+  /* border: 1px solid red; */
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 0 0 16px 16px;
+}
+
+.ham {
+  cursor: pointer;
+  visibility: hidden;
+}
+
+h1 {
+  font-family: var(--body-medium-font);
+  color: var(--white);
+  font-weight: bold;
+}
+.refreshBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+.refreshBtn:hover {
+  animation: spin 1.3s ease-in-out infinite;
+}
+.refresh {
+  cursor: pointer;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* 햄버거 메뉴 */
+
+.side {
+  /* border: 1px solid lightcoral; */
+  border-radius: 0 16px 0 0;
+  background-color: var(--white);
+  width: 93px;
+  height: 100vh;
+  padding: 32px 0;
+  color: var(--grey-600);
+  position: fixed;
+  top: 0;
+  left: -100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.sideOn {
+  left: 0;
+}
+
+.login {
+  /* display: none; */
+  padding: 16px 0;
+}
+
+.profile {
+  display: none;
+  margin: 16px 0;
+}
+
+.contents {
+  border-top: 1px solid var(--grey-200);
+  flex: 1;
+  padding-top: 16px;
+}
+
+.logout {
+  font-family: 'GmarketSansBold';
+  font-size: 12px;
+  color: var(--grey-200);
+}
+
+.login div,
+.profile,
+.contents div {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.sideBg {
+  opacity: 0;
+  transition: 0.8s;
+  background-color: var(--modal-bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sideBgOn {
+  opacity: 1;
+}
+
+@media (max-width: 908px) {
+  .ham {
+    visibility: visible;
+  }
+}
+
+@media (min-width: 908px) {
+  .side {
+    top: -48px;
+    left: 0;
+    position: fixed;
+    transition: none;
+    z-index: 1;
+  }
+
+  .sideOn {
+    transition: none;
+  }
+
+  .sideBg {
+    display: none;
+  }
+}

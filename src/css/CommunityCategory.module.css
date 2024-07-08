@@ -1,0 +1,50 @@
+.communityCategory {
+  position: relative;
+}
+.communityHd {
+  padding: 4rem 1rem 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+
+  position: absolute;
+  width: 100%;
+}
+.communityHd span {
+  color: var(--white);
+}
+.communityHd .buttonCon {
+  width: 70%;
+  max-width: 600px;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.communityHd a {
+  width: 100%;
+  border: 1px solid var(--white);
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.communityHd a.on,
+.communityHd a:hover {
+  background-color: var(--white);
+  color: var(--primary-variant-color);
+  font-weight: bold;
+}
+.communityHd a > p {
+  font-size: 0.5rem;
+}

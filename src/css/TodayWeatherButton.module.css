@@ -1,0 +1,16 @@
+.todayW {
+  border: 1px solid var(--secondary-color);
+  cursor: pointer;
+  background-color: var(--white);
+  border-radius: 99px;
+  padding: 0.6rem 1rem;
+  transition: 0.3s;
+  width: 100%;
+  min-width: 5rem;
+  max-width: 18rem;
+}
+.todayW.on,
+.todayW:hover {
+  background-color: var(--secondary-color);
+  color: var(--grey-600);
+}

@@ -1,0 +1,7 @@
+.postImgFalse {
+  padding: 1rem;
+}
+.postImgFalse p {
+  color: var(--grey-400);
+  padding: 4px;
+}

@@ -1,0 +1,156 @@
+.wrap {
+  background-color: var(--grey-100);
+  position: relative;
+  padding: 16px;
+}
+.hours {
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 15%);
+  margin: auto;
+}
+.top {
+  border-bottom: 1px solid var(--grey-200);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top h2 {
+  flex: 1;
+  margin-bottom: 0;
+}
+.top > span {
+  color: var(--grey-600);
+  margin-right: 4px;
+}
+
+/* 활동 스위치 */
+.switch {
+  border-radius: 16px;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+  background-color: var(--grey-100);
+  align-content: center;
+  position: relative;
+}
+.switch input {
+  /* 체크박스 숨기기 */
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  padding: 4px 8px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--grey-100);
+  border-radius: 999px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 6px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+}
+
+/* 필터 메뉴 */
+.filterCon {
+  padding: 8px 16px;
+  background-color: var(--grey-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.8s, opacity 0.4s;
+}
+.filter {
+  height: 32px;
+  padding: 0 16px;
+  border: 1px solid var(--grey-200);
+  background-color: var(--white);
+  border-radius: 999px;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.filter:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+.filter.active {
+  background-color: var(--primary-variant-color);
+  color: var(--white);
+}
+.activity {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.8s, opacity 0.4s;
+}
+.visible {
+  max-height: 100px; /* 적절한 최대 높이로 조정 */
+  opacity: 1;
+  transition: max-height 0.8s, opacity 0.4s;
+}
+.hidden {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.8s, opacity 0.4s;
+}
+
+/* 날씨 메뉴 */
+.hours .weatherCon {
+  padding: 16px;
+  display: flex;
+  overflow: hidden;
+}
+.weatherItem,
+.exItem {
+  text-align: center;
+}
+.weatherItem {
+  padding-bottom: 12px;
+}
+.weatherItem p:first-of-type {
+  color: var(--grey-600);
+}
+.weatherItem img,
+.exItem img {
+  padding: 8px;
+}
+.exItem {
+  color: var(--primary-variant-color);
+  border-top: 1px solid var(--grey-200);
+}
+
+.activityGood p {
+  color: var(--primary-variant-color);
+}
+.activityBad p {
+  color: var(--grey-600);
+}

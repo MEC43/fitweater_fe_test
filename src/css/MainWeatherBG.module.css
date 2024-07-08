@@ -1,0 +1,109 @@
+/* MainweatherBGcon */
+.MainweatherBGcon {
+  /* border: 2px solid darkgreen; */
+  position: relative;
+  top: 0;
+  /* background-color: darkkhaki; */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* padding-top: 100px; */
+  justify-content: space-between;
+  padding-bottom: 4%;
+  z-index: 0;
+}
+
+.MainweatherBGcon>* {
+  position: relative;
+  z-index: 1;
+  /* border: 2px solid red; */
+}
+
+/* MainweatherBG */
+.MainweatherBG {
+  /* background-color: lightcyan; */
+  /* background-color: rgba(44, 8, 100, 0.3); */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.MainweatherBG::after {
+  content: "";
+  width: 100%;
+  height: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--grey-100);
+  background: linear-gradient(0deg,
+      rgba(238, 238, 238, 1) 0%,
+      rgba(238, 238, 238, 0) 100%);
+}
+
+.MainweatherBG img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  /* opacity: 0.8; */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.MainweatherBG img.bg {
+  height: auto;
+  bottom: -40px;
+}
+
+.MainweatherBG img.skyWeather {
+  object-fit: cover;
+  object-position: top;
+  position: fixed;
+  max-width: 720px;
+  top: 0;
+}
+
+.MainweatherBG img.rain {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-fit: contain; */
+  /* object-position: center; */
+}
+
+.MainweatherBG img.skySun {
+  /* border: 1px solid red; */
+  object-fit: contain;
+  object-position: top;
+  position: fixed;
+  max-width: 720px;
+  top: 0;
+  transform: translateX(-55%);
+}
+
+.MainweatherBG img.skyCloud {
+  /* object-fit: cover; */
+  object-position: center;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  min-height: 840px;
+  min-width: 400px;
+
+  max-width: 720px;
+  /* top: 30%; */
+  top: 0%;
+  opacity: 1;
+}
+
+@media screen and (max-width:600px) {
+  .MainweatherBG img.bg {
+    width: 160%;
+    bottom: 0;
+  }
+}

@@ -1,0 +1,37 @@
+.cmntOptionMenu {
+  border: 1px solid var(--grey-200);
+  border-radius: 1rem;
+  background-color: var(--white);
+  overflow: hidden;
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  visibility: hidden;
+}
+.cmntOptionMenu.on {
+  visibility: visible;
+}
+
+.cmntOptionMenu::before {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: calc(100% - 1rem);
+  background-color: var(--grey-100);
+  top: calc(50% - 1px);
+  left: 0.5rem;
+}
+.cmntOptionMenu button {
+  padding: 0.8rem 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.cmntOptionMenu button:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
