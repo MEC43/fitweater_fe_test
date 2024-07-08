@@ -50,7 +50,12 @@ const Header = () => {
       const { kakao } = window;
 
       // Kakao Maps API가 로드되었는지 확인합니다.
-      if (kakao && kakao.maps && kakao.maps.services) {
+      if (
+        location.latitude &&
+        location.longitude &&
+        window.kakao &&
+        window.kakao.maps
+      ) {
         const geocoder = new kakao.maps.services.Geocoder();
         const coords = new kakao.maps.LatLng(
           location.latitude,
