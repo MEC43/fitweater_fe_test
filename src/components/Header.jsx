@@ -41,7 +41,12 @@ const Header = () => {
   }, [fetchLocation]);
 
   const regionName = () => {
-    if (location.latitude && location.longitude) {
+    if (
+      location.latitude &&
+      location.longitude &&
+      window.kakao &&
+      window.kakao.maps
+    ) {
       const { kakao } = window;
 
       // Kakao Maps API가 로드되었는지 확인합니다.
