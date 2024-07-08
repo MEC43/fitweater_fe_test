@@ -45,12 +45,19 @@ const Header = () => {
       return new Promise((resolve, reject) => {
         const checkAPI = () => {
           if (window.kakao && window.kakao.maps) {
+            console.log('Kakao Maps API loaded successfully');
             resolve();
           } else if (retries > 20) {
+            console.error(
+              'Kakao Maps API failed to load after multiple attempts'
+            );
             reject(new Error('Kakao Maps API failed to load'));
           } else {
+            console.log(
+              `Waiting for Kakao Maps API to load... (Attempt ${retries + 1})`
+            );
             retries++;
-            setTimeout(checkAPI, 100);
+            setTimeout(checkAPI, 500);
           }
         };
         let retries = 0;
@@ -92,15 +99,34 @@ const Header = () => {
                   'regionthirdName',
                   region.region_3depth_name
                 );
+
+                console.log(
+                  'Region information successfully retrieved and stored'
+                );
+              } else {
+                console.error('Failed to retrieve region information', status);
               }
             }
           );
         })
         .catch((error) => {
-          console.error(error.message);
+          console.error('Error in regionName function:', error.message);
         });
+    } else {
+      console.error('Location information is not available');
     }
   };
+
+  // Kakao Maps API 로딩 상태 확인
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.kakao && window.kakao.maps) {
+      console.log('Kakao Maps API is already loaded');
+    } else {
+      console.log('Waiting for Kakao Maps API to load...');
+      window.kakaoMapCallback = () =>
+        console.log('Kakao Maps API loaded via callback');
+    }
+  });
 
   useEffect(() => {
     regionName();
