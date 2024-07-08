@@ -40,6 +40,18 @@ const Header = () => {
     fetchLocation();
   }, [fetchLocation]);
 
+  useEffect(() => {
+    const loadKakaoMap = () => {
+      if (window.kakao && window.kakao.maps) {
+        initializeMap();
+      } else {
+        setTimeout(loadKakaoMap, 300);
+      }
+    };
+
+    loadKakaoMap();
+  }, [location]);
+
   const regionName = () => {
     if (
       location.latitude &&
