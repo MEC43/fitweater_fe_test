@@ -1,12 +1,12 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import style from "../css/signupcomplete.module.css";
+import style from '../css/signupcomplete.module.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignupComplete = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    navigate("/login");
+    navigate('/login');
   };
 
   return (
