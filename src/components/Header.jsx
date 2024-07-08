@@ -53,63 +53,92 @@ const Header = () => {
   }, [location]);
 
   const regionName = () => {
-    if (
-      location.latitude &&
-      location.longitude &&
-      window.kakao &&
-      window.kakao.maps
-    ) {
-      const { kakao } = window;
+    const checkKakaoAPI = () => {
+      return new Promise((resolve, reject) => {
+        const checkAPI = () => {
+          if (window.kakao && window.kakao.maps) {
+            console.log('Kakao Maps API loaded successfully');
+            resolve();
+          } else if (retries > 20) {
+            console.error(
+              'Kakao Maps API failed to load after multiple attempts'
+            );
+            reject(new Error('Kakao Maps API failed to load'));
+          } else {
+            console.log(
+              `Waiting for Kakao Maps API to load... (Attempt ${retries + 1})`
+            );
+            retries++;
+            setTimeout(checkAPI, 500);
+          }
+        };
+        let retries = 0;
+        checkAPI();
+      });
+    };
 
-      // Kakao Maps API가 로드되었는지 확인합니다.
-      if (
-        location.latitude &&
-        location.longitude &&
-        window.kakao &&
-        window.kakao.maps
-      ) {
-        const geocoder = new kakao.maps.services.Geocoder();
-        const coords = new kakao.maps.LatLng(
-          location.latitude,
-          location.longitude
-        );
+    if (location.latitude && location.longitude) {
+      checkKakaoAPI()
+        .then(() => {
+          const { kakao } = window;
+          const geocoder = new kakao.maps.services.Geocoder();
+          const coords = new kakao.maps.LatLng(
+            location.latitude,
+            location.longitude
+          );
 
-        geocoder.coord2RegionCode(
-          coords.getLng(),
-          coords.getLat(),
-          (result, status) => {
-            if (status === kakao.maps.services.Status.OK) {
-              const region = result.find((item) => item.region_type === 'H');
-              if (region) {
+          geocoder.coord2RegionCode(
+            coords.getLng(),
+            coords.getLat(),
+            (result, status) => {
+              if (status === kakao.maps.services.Status.OK) {
+                const region =
+                  result.find((item) => item.region_type === 'H') || result[0];
                 setRegionFirstName(region.region_1depth_name);
                 setRegionSecondName(region.region_2depth_name);
                 setRegionthirdName(region.region_3depth_name);
+
+                // 로컬스토리지에 저장
+                localStorage.setItem(
+                  'regionFirstName',
+                  region.region_1depth_name
+                );
+                localStorage.setItem(
+                  'regionSecondName',
+                  region.region_2depth_name
+                );
+                localStorage.setItem(
+                  'regionthirdName',
+                  region.region_3depth_name
+                );
+
+                console.log(
+                  'Region information successfully retrieved and stored'
+                );
               } else {
-                setRegionFirstName(result[0].region_1depth_name);
-                setRegionSecondName(result[0].region_2depth_name);
-                setRegionthirdName(result[0].region_3depth_name);
+                console.error('Failed to retrieve region information', status);
               }
-              // 로컬스토리지에 저장
-              localStorage.setItem(
-                'regionSecondName',
-                region.region_2depth_name
-              );
-              localStorage.setItem(
-                'regionthirdName',
-                region.region_3depth_name
-              );
-              localStorage.setItem(
-                'regionFirstName',
-                region.region_1depth_name
-              );
             }
-          }
-        );
-      } else {
-        console.error('Kakao Maps API is not loaded.'); // API 로드 실패 시 오류 로그 출력
-      }
+          );
+        })
+        .catch((error) => {
+          console.error('Error in regionName function:', error.message);
+        });
+    } else {
+      console.error('Location information is not available');
     }
   };
+
+  // Kakao Maps API 로딩 상태 확인
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.kakao && window.kakao.maps) {
+      console.log('Kakao Maps API is already loaded');
+    } else {
+      console.log('Waiting for Kakao Maps API to load...');
+      window.kakaoMapCallback = () =>
+        console.log('Kakao Maps API loaded via callback');
+    }
+  });
 
   useEffect(() => {
     regionName();
