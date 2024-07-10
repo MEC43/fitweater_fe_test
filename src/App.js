@@ -61,7 +61,7 @@ function App() {
             const decodedToken = jwtDecode(token);
             setUserid(decodedToken.userid);
             setUsername(decodedToken.username);
-            // setUserprofile(나중에처리..)
+            setUserprofile(decodedToken.userprofile);
             console.log(decodedToken); // 여기선 잘뜸.
           } catch (error) {
             console.error("Invalid token", error);
@@ -113,7 +113,7 @@ function App() {
 
   const registerKakaoUser = async (userid, username, profile_image) => {
     try {
-      const response = await fetch(`${url}/kakao-register`, {
+      const response = await fetch('https://port-0-fit-weather-backend-lydr6a6pb95d7aa4.sel5.cloudtype.app/kakao-register', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

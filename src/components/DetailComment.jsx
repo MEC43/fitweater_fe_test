@@ -144,7 +144,10 @@ function DetailComment({
         <img
           src={
             userProfileImg
-              ? `${url}/${userProfileImg}`
+              ? userProfileImg.startsWith('http://t1.kakaocdn.net') ||
+                userProfileImg.startsWith('http://k.kakaocdn.net/')
+                ? userProfileImg
+                : `${url}${userProfileImg}`
               : `/img/default/man_photo.svg`
           }
           alt={cmnt.userId}

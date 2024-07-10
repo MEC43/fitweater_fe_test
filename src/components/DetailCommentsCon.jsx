@@ -64,15 +64,17 @@ function DetailCommentsCon({ fetchPostDetail }) {
       .then((res) => res.json()) //
       .then((data) => {
         console.log('받아온 데이터', data);
+        console.log('받아온 데이터', data.cmntList);
 
         setCmntData(data.cmntList);
         fetchPostDetail();
-        // console.log('cmntData에 저장된', cmntData);
       });
   }, [postId]);
+
   useEffect(() => {
     setCmntErrMsg();
     fetchCmnts();
+    console.log('cmntData에 저장된', cmntData);
   }, [fetchCmnts]);
 
   return (

@@ -2,9 +2,9 @@ import style from '../css/TalkPage.module.css';
 import CommunityFilter from '../components/CommunityFilter';
 import CommunityPostCon from '../components/CommunityPostCon';
 
-import { buttonStore } from '../store/talkbuttonStore';
-import { useEffect } from 'react';
-import { useCategoryStore } from '../store/categoryStore';
+import { buttonStore } from "../store/talkbuttonStore";
+import { useEffect } from "react";
+import { useCategoryStore } from "../store/categoryStore";
 
 function TalkPage() {
   const { setOnBtn } = buttonStore();
@@ -16,6 +16,7 @@ function TalkPage() {
   useEffect(() => {
     setOnBtn('all');
     setOnCommuCate('talk');
+    window.scrollTo(0, 0);
   }, []);
 
   return (

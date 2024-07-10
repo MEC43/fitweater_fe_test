@@ -1,5 +1,7 @@
-import style from '../css/CoordiReviewOption.module.css';
-import { useVerifyPost } from '../store/verifyPostContentStore';
+
+import style from "../css/CoordiReviewOption.module.css";
+import { useVerifyPost } from "../store/verifyPostContentStore";
+
 
 function CoordiReviewOption() {
   const { onReview, setOnReview, setOffReview } = useVerifyPost();

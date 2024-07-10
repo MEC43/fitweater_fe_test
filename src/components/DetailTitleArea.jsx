@@ -3,11 +3,11 @@ import CommunityCategory from './CommunitySubCategory';
 import Region from './Region';
 import OptionMenu from './OptionMenu';
 
-import { useRef, useEffect, useState } from 'react';
-import { useOpenMenuModal } from '../store/detailOpMenuModalStore';
-import { usePostData } from '../store/postDataStore';
-import { url } from '../store/ref';
-import { useLoginInfoStore } from '../store/loginInfoStore';
+import { useRef, useEffect, useState } from "react";
+import { useOpenMenuModal } from "../store/detailOpMenuModalStore";
+import { usePostData } from "../store/postDataStore";
+import { url } from "../store/ref";
+import { useLoginInfoStore } from "../store/loginInfoStore";
 
 function DetailTitleArea({ fetchPostDetail, postId }) {
   const { postDetail, likes, setLikes } = usePostData();

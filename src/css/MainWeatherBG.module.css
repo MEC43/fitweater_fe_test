@@ -13,7 +13,13 @@
   z-index: 0;
 }
 
-.MainweatherBGcon>* {
+.WeatherCon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.MainweatherBGcon > * {
   position: relative;
   z-index: 1;
   /* border: 2px solid red; */
@@ -40,9 +46,11 @@
   bottom: 0;
   left: 0;
   background: var(--grey-100);
-  background: linear-gradient(0deg,
-      rgba(238, 238, 238, 1) 0%,
-      rgba(238, 238, 238, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(238, 238, 238, 0) 100%
+  );
 }
 
 .MainweatherBG img {
@@ -101,7 +109,7 @@
   opacity: 1;
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
   .MainweatherBG img.bg {
     width: 160%;
     bottom: 0;

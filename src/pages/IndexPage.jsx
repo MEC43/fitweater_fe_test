@@ -25,13 +25,17 @@ const IndexPage = () => {
         <div className={bgStyle.MainweatherBGcon}>
           <MainWeatherBG />
 
-          <PresentWeather />
-          <WeatherTalk setMatchingUrl={setMatchingUrl} />
-          <Avatar
-            topUrl={matchingUrl.tops}
-            bottomUrl={matchingUrl.bottoms}
-            outerUrl={matchingUrl.outers}
-          />
+          <div className={bgStyle.WeatherCon}>
+            <PresentWeather />
+          </div>
+          <div className={bgStyle.MainAvatar}>
+            <WeatherTalk setMatchingUrl={setMatchingUrl} />
+            <Avatar
+              topUrl={matchingUrl.tops}
+              bottomUrl={matchingUrl.bottoms}
+              outerUrl={matchingUrl.outers}
+            />
+          </div>
         </div>
         <Hours />
         <Weekly />

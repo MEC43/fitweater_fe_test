@@ -6,7 +6,7 @@ export const KakaoLogin = () => {
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
 
   console.log("REST_API_KEY:", process.env.REACT_APP_KAKAO_APP_KEY);
-  console.log("REDIRECT_URI:", process.env.REACT_APP_REDIRECT_URI);
+  console.log("REDIRECT_URI:", process.env.REACT_APP_REDIRECT_URI); 
 
   // 카카오 로그인 인증 코드 요청
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;

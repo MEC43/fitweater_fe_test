@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import style from '../css/Header.module.css';
 import { useEffect, useState, useCallback } from 'react';
 import useFetchStore from '../store/fetchStore';

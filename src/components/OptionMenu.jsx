@@ -1,10 +1,11 @@
 import style from '../css/OptionMenu.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import ConfirmModal from './ConfirmModal';
-import { useOpenMenuModal } from '../store/detailOpMenuModalStore';
-import { usePostData } from '../store/postDataStore';
-import { url } from '../store/ref';
+import ConfirmModal from "./ConfirmModal";
+import { useOpenMenuModal } from "../store/detailOpMenuModalStore";
+import { usePostData } from "../store/postDataStore";
+import { url } from "../store/ref";
+
 
 function OptionMenu() {
   const { modalClose, opMenuClose, isModalOpen, modalOpen, isOpMenuOn } =

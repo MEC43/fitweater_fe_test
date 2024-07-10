@@ -2,10 +2,9 @@ import style from '../css/ConfirmModal.module.css';
 
 import { useEffect, useRef } from 'react';
 
-import CancelBtn from './CancelBtn';
-import DeleteEditBtn from './DeleteEditBtn';
-import { useOpenMenuModal } from '../store/detailOpMenuModalStore';
-
+import CancelBtn from "./CancelBtn";
+import DeleteEditBtn from "./DeleteEditBtn";
+import { useOpenMenuModal } from "../store/detailOpMenuModalStore";
 function ConfirmModal({ message, btnText, clickDelAndSubmt, clickCancel }) {
   const { isModalOpen, modalClose, opMenuClose } = useOpenMenuModal();
 

@@ -119,11 +119,7 @@ const useFetchStore = create((set, get) => ({
           );
           // console.log(temp);
           // console.log(shortWeather);
-
-          // const temp = shortWeather.filter((item) => item.category === "TMP");
-          // const sky = shortWeather.filter((item) => item.category === "SKY");
-          // const pop = shortWeather.filter((item) => item.category === "POP");
-          // console.log(pop);
+          // console.log(popArry);
 
           const pmSKY = shortWeather[175].fcstValue;
           const pmPTY = shortWeather[176].fcstValue;
@@ -172,14 +168,30 @@ const useFetchStore = create((set, get) => ({
 
           return {
             maxTemp: shortWeather[157].fcstValue.substr(0, 2),
+            secTMX: shortWeather[447].fcstValue.substr(0, 2),
+            thiTMX: shortWeather[737].fcstValue.substr(0, 2),
             minTemp: shortWeather[48].fcstValue.substr(0, 2),
+            secTMN: shortWeather[338].fcstValue.substr(0, 2),
+            thiTMN: shortWeather[628].fcstValue.substr(0, 2),
 
             amSKY: shortWeather[66].fcstValue,
             amPTY: shortWeather[67].fcstValue,
+            secAmSKY: shortWeather[356].fcstValue,
+            secAmPTY: shortWeather[357].fcstValue,
+            thiAmSKY: shortWeather[646].fcstValue,
+            thiAmPTY: shortWeather[647].fcstValue,
             weatherText,
 
             pmSKY: shortWeather[175].fcstValue,
             pmPTY: shortWeather[176].fcstValue,
+            secPmSKY: shortWeather[456].fcstValue,
+            secPmPTY: shortWeather[466].fcstValue,
+            thiPmSKY: shortWeather[755].fcstValue,
+            thiPmPTY: shortWeather[756].fcstValue,
+
+            firPOP: shortWeather[68].fcstValue,
+            secPOP: shortWeather[358].fcstValue,
+            thiPOP: shortWeather[648].fcstValue,
           };
         } else {
           console.error("Unexpected response structure:", data);
@@ -189,11 +201,26 @@ const useFetchStore = create((set, get) => ({
       }
       return {
         maxTemp: "",
+        secTMX: "",
+        thiTMX: "",
         minTemp: "",
+        secTMN: "",
+        thiTMN: "",
         amSKY: "",
         amPTY: "",
         pmSKY: "",
         pmPTY: "",
+        secAmSKY: "",
+        secAmPTY: "",
+        thiAmSKY: "",
+        thiAmPTY: "",
+        secPmSKY: "",
+        secPmPTY: "",
+        thiPmSKY: "",
+        thiPmPTY: "",
+        firPOP: "",
+        secPOP: "",
+        thiPOP: "",
         weatherText: "",
       };
     };
@@ -241,7 +268,7 @@ const useFetchStore = create((set, get) => ({
       } catch (error) {
         console.error("Error fetching dust data:", error);
       }
-      return { dust: "없음" };
+      return { dust: "보통" };
     };
 
     const fetchUv = async () => {

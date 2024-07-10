@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import style from "../css/MyInfoManage.module.css";
-import { Link } from "react-router-dom";
 import { url } from "../store/ref";
 
 import ManageModal from "../components/ManageModal.jsx"; // 이용약관 모듈창
 import CancelAccount from "../components/CancelAccount.jsx"; // 탈퇴 모달창
 import HeaderAccountManage from "../components/HeaderAccountManage.jsx"; // 헤더
-import CancleAccount from "../components/CancelAccount.jsx";
 
 const Modify = () => {
   const [userid, setUserid] = useState(""); // 사용자 ID
@@ -16,7 +14,8 @@ const Modify = () => {
   const [message2, setMessage2] = useState("");
   const [message3, setMessage3] = useState("");
   const [message4, setMessage4] = useState("");
-  const [showTerms, setShowTerms] = useState(false); // 상태 추가
+  const [showTerms, setShowTerms] = useState(false); // 개인정보 수정 모달 상태
+  const [showCancel, setShowCancel] = useState(false); // 탈퇴 모달 상태
 
   useEffect(() => {
     // 사용자 ID를 서버에서 가져옴
@@ -96,6 +95,30 @@ const Modify = () => {
     }
   };
 
+  const confirmCancelAccount = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`${url}/deleteUser?token=${token}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        alert("회원탈퇴가 완료되었습니다.");
+        setShowCancel(false);
+        localStorage.removeItem("token"); // 토큰 삭제
+        window.location.href = "/";
+      } else {
+        alert("회원탈퇴에 실패하였습니다.");
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      alert("서버 오류가 발생하였습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <>
       <HeaderAccountManage />
@@ -170,16 +193,23 @@ const Modify = () => {
             onConfirm={confirmUpdateUserInfo}
           />
         )}
+        {showCancel && (
+          <CancelAccount
+            onClose={() => setShowCancel(false)}
+            onConfirm={confirmCancelAccount}
+          />
+        )}
 
         <div className={style.delete}>
           <div className={`fontBodyM ${style.deleteMemo}`}>
             회원정보를 삭제하시겠어요?{" "}
-            <button className={`fontBodyM ${style.deleteButton}`}>
-              {/* 아직 기능 구현 전 */}
+            <button
+              className={`fontBodyM ${style.deleteButton}`}
+              onClick={() => setShowCancel(true)}
+            >
               탈퇴하기
             </button>
           </div>
-          {showTerms && <CancleAccount />}
         </div>
       </div>
     </>

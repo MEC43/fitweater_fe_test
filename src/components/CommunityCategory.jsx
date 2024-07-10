@@ -1,8 +1,9 @@
 import style from '../css/CommunityCategory.module.css';
 
-import { Link, Outlet } from 'react-router-dom';
-import { buttonStore } from '../store/talkbuttonStore';
-import { useCategoryStore } from '../store/categoryStore';
+import { Link, Outlet } from "react-router-dom";
+import { buttonStore } from "../store/talkbuttonStore";
+import { useCategoryStore } from "../store/categoryStore";
+
 
 function CommunityCategory() {
   const { onCommuCate, setOnCommuCate } = useCategoryStore();

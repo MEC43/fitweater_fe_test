@@ -1,5 +1,6 @@
 .present {
   padding: 32px 0 16px 0;
+  margin: auto;
 }
 .temperature {
   margin-bottom: 8px;
@@ -13,7 +14,6 @@
   color: var(--primary-variant-color);
 }
 .temperature p {
-  border: 1px solid lightblue;
   text-align: right;
 }
 .temperature p:nth-of-type(2) {

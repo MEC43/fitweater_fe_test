@@ -1,8 +1,9 @@
 import style from "../css/H2.module.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const H2Codi = ({ setSelectDate }) => {
+  const [activeButton, setActiveButton] = useState(0);
+
   // M/D 형식
   const getDate = (addDay) => {
     const date = new Date();
@@ -12,19 +13,9 @@ const H2Codi = ({ setSelectDate }) => {
     return `${month}/${day}`;
   };
 
-  // YYYYMMDD 형식
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}${month}${day}`;
-  };
-
-  const dateClick = (addDay) => {
-    const date = new Date();
-    date.setDate(date.getDate() + addDay);
-    setSelectDate(formatDate(date));
-    console.log("YYYYMMDD---", formatDate(date));
+  const dateClick = (day) => {
+    setActiveButton(day);
+    setSelectDate(day);
   };
 
   return (
@@ -32,30 +23,17 @@ const H2Codi = ({ setSelectDate }) => {
       <div className={style.h2Con}>
         <h2 className="fontHead2">코디</h2>
         <div className={style.btnCon}>
-          <button
-            className={`fontBodyM ${style.btnDate} ${style.active}`}
-            onClick={() => dateClick(0)}
-          >
-            오늘
-          </button>
-          <button
-            className={`fontBodyM ${style.btnDate}`}
-            onClick={() => dateClick(1)}
-          >
-            {getDate(1)}
-          </button>
-          <button
-            className={`fontBodyM ${style.btnDate}`}
-            onClick={() => dateClick(2)}
-          >
-            {getDate(2)}
-          </button>
-          <button
-            className={`fontBodyM ${style.btnDate}`}
-            onClick={() => dateClick(3)}
-          >
-            {getDate(3)}
-          </button>
+          {[0, 1, 2].map((day, index) => (
+            <button
+              key={index}
+              className={`fontBodyM ${style.btnDate} ${
+                activeButton === day ? style.active : ""
+              }`}
+              onClick={() => dateClick(day)}
+            >
+              {day === 0 ? "오늘" : getDate(day)}
+            </button>
+          ))}
         </div>
       </div>
     </section>

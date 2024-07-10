@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import useFetchStore from "../store/fetchStore";
 import useClothesStore from "../store/clothesStore";
 import { url } from "../store/ref";
@@ -114,6 +115,24 @@ const useMatchingData = (selectedTemp, selectedMode) => {
       // console.log("로컬---", localValue);
 
       const postClothesData = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("No token found");
+          setChatData("No token found");
+          return;
+        }
+        // console.log("토큰---", token);
+
+        let gender;
+        try {
+          const decodedToken = jwtDecode(token);
+          gender = decodedToken.gender;
+        } catch (error) {
+          console.error("Failed to decode token:", error);
+          setChatData("Failed to decode token");
+          return;
+        }
+        console.log("매칭---", gender);
         try {
           const response = await fetch(`${url}/codiTalkBox`, {
             method: "POST",
@@ -130,6 +149,7 @@ const useMatchingData = (selectedTemp, selectedMode) => {
               clothes: baseClothes,
               selectedTemp: selectedTemp,
               selectedMode: selectedMode,
+              gender: gender, // gender 값을 body에 추가
             }),
           });
 

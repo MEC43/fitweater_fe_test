@@ -3,8 +3,8 @@ import style from '../css/Codi.module.css'
 import { url } from '../store/ref'
 const CodiLogCalendar = ({ feltWeather, setModalActive, ALLcodiLogList, codiLogList, lastElementRef, TheMonth, TheYear, today }) => {
 
-    console.log('필터 종류 - 달력/codiLogList', feltWeather,);
-    console.log('codiLogList- 달력/', codiLogList);
+    console.log('필터 종류 - 달력/codiLogList', feltWeather,codiLogList);
+    // console.log('codiLogList- 달력/', codiLogList);
     const [monthBoxes, setMonthBoxes] = useState([]); // 렌더링할 달력 박스들
     const dayBoxesRef = useRef([]); // useRef를 사용하여 dayBoxesRef 생성 -> 모든 day
     const hasLogsRef = useRef([]); // useRef를 사용하여 hasLogsRef 생성 -> 기록이 있는 day
@@ -13,12 +13,13 @@ const CodiLogCalendar = ({ feltWeather, setModalActive, ALLcodiLogList, codiLogL
 
     // 해당 달에 대한 상태
     const [LastDate, setLastDate] = useState('');//해당 달 며칠까지 있는지
-    const [FirstDay, setFirstDay] = useState('');//해당 달 첫날 요일
-
+    const [FirstDay, setFirstDay] = useState('');//해당 달 첫날 요일    
+    
     useEffect(() => {//변동감지용
         // console.log('----- TheYear TheMonth 변동 : ', TheYear, TheMonth);
         getFirstLastDate(TheYear, TheMonth);
         // getToday();
+
     }, [TheYear, TheMonth])
 
     useEffect(() => {//변동감지용
@@ -26,6 +27,8 @@ const CodiLogCalendar = ({ feltWeather, setModalActive, ALLcodiLogList, codiLogL
         if (FirstDay !== '' && LastDate !== '') {
             addMonthBox(TheYear, TheMonth, FirstDay, LastDate); // FirstDay와 LastDate가 모두 설정된 후에만 호출
         }
+
+        
     }, [FirstDay, LastDate, codiLogList])
 
 
@@ -37,17 +40,6 @@ const CodiLogCalendar = ({ feltWeather, setModalActive, ALLcodiLogList, codiLogL
         updateBoxesHasTag();
     }, [feltWeather, codiLogList]);
 
-
-    // function getToday() {
-    //     // 오늘 날짜를 생성하여 'YYYY-MM-DD' 형식의 문자열로 변환
-    //     const today = new Date();
-    //     const year = today.getFullYear();
-    //     const month = String(today.getMonth() + 1).padStart(2, '0'); // 월을 2자리로 변환
-    //     const day = String(today.getDate()).padStart(2, '0'); // 일을 2자리로 변환
-    //     const todayString = `${year}-${month}-${day}`;
-
-    //     return setToday(todayString);
-    // }
 
     function getFirstLastDate(Year, Month) {
         const lastDay = new Date(Year, Month, 0).getDate(); // 이번 달의 마지막 일자
@@ -188,12 +180,3 @@ const CodiLogCalendar = ({ feltWeather, setModalActive, ALLcodiLogList, codiLogL
 
 export default CodiLogCalendar
 
-
-{/*----------- li samples -----------*/ }
-
-{/* <li className={`${style.day} ${style.activeToday}`}>
-    <div className={style.imgCon}>
-        <img src={`${url}/uploads/codiLog/1719854442475.jpeg`} alt="" />
-    </div>
-    <span>5</span>
-</li> */}

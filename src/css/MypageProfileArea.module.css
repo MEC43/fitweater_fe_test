@@ -7,20 +7,30 @@
 
 .pofileImg {
   overflow: hidden;
-  max-width: 6rem;
-  max-height: 6rem;
+  padding-top: 6rem;
+  padding-right: 6rem;
   border-radius: 50%;
-  margin: auto;
+  position: relative;
 }
+
 .pofileImg img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.profileImg img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+}
+
 .btnCon {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   margin: 1.5rem auto 0;
 }
@@ -28,11 +38,13 @@
   background-color: var(--white);
   color: var(--grey-600);
   border-radius: 5rem;
-  padding: 1rem;
+  padding: 0.7rem 4rem;
   width: 100%;
   max-width: 15rem;
   box-shadow: 4px 4px 8px var(--grey-200);
   transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+  margin-bottom: 20px;
 }
 .btnCon button:hover,
 .pofileEdit .btnCon button:first-of-type:hover {
@@ -44,6 +56,7 @@
 .pofileEdit {
   padding: 2rem 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   max-width: 33rem;
   gap: 1.3rem;
@@ -55,12 +68,9 @@
 .myPofile {
   text-align: center;
 }
-.myPofile > * {
-  width: 100%;
-}
 
 .myPofile span {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 /* ---- 프로필 수정 영역 ---- */
@@ -78,7 +88,6 @@
   width: 100%;
   color: var(--grey-600);
 }
-
 .pofileEdit input {
   outline: none;
   border: 1px solid var(--grey-200);
@@ -88,15 +97,22 @@
   color: var(--grey-800);
   width: 100%;
 }
-.pofileEdit label:first-of-type input {
-  width: calc(100% - 8rem);
+.pofileEdit .inputWithButton {
+  display: flex;
+  width: 100%; /* 전체 너비를 차지하도록 수정 */
+  align-items: center;
+  gap: 0.5rem; /* 입력창과 버튼 사이의 간격 */
 }
-.pofileEdit label:first-of-type button {
+.pofileEdit .inputWithButton input {
+  flex-grow: 1;
+}
+.pofileEdit .inputWithButton button {
+  flex-shrink: 0;
   background-color: var(--primary-variant-color);
   color: var(--white);
   border-radius: 5rem;
   padding: 0.8rem 1rem;
-  min-width: 1rem;
+  width: 8rem; /* 버튼의 고정 너비를 살짝 줄임 */
   box-shadow: 4px 4px 8px var(--grey-200);
   transition: background-color 0.3s, color 0.3s;
 }
@@ -108,4 +124,35 @@
 .pofileEdit .btnCon button:last-of-type:hover {
   background-color: var(--grey-600);
   color: var(--white);
+}
+
+/* 사진 추가 */
+
+.profileImg img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.fileInputLabel {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primary-variant-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 4px 4px 8px var(--grey-200);
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+/* 중복 확인 메시지 스타일 */
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px; /* 메시지와 입력 필드 간격 조절 */
 }

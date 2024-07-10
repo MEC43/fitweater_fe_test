@@ -125,7 +125,12 @@ const Nav = ({ navOpen, setNavOpen }) => {
               {userInfo.userprofile ? (
                 <img
                   className={style.MyProfileImg}
-                  src={userInfo.userprofile}
+                  src={
+                    userInfo.userprofil?.startsWith('http://t1.kakaocdn.net') ||
+                    userInfo.userprofil?.startsWith('http://k.kakaocdn.net/')
+                      ? userInfo.userprofile
+                      : `${url}${userInfo.userprofile}`
+                  }
                   alt="userprofile"
                 />
               ) : (

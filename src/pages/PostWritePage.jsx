@@ -1,16 +1,17 @@
 import style from '../css/PostWritePage.module.css';
 
-import PostCategorySelect from '../components/PostCategorySelect';
-import PostWriteArea from '../components/PostWriteArea';
-import CancelBtn from '../components/CancelBtn';
-import SubmitBtn from '../components/SubmitBtn';
-import PagesHeader from '../components/PagesHeader';
-import { useNavigate } from 'react-router-dom';
-import { useVerifyPost } from '../store/verifyPostContentStore';
-import { usePostData } from '../store/postDataStore';
-import { url } from '../store/ref';
-import React from 'react';
-import { useLoginInfoStore } from '../store/loginInfoStore';
+import PostCategorySelect from "../components/PostCategorySelect";
+import PostWriteArea from "../components/PostWriteArea";
+import CancelBtn from "../components/CancelBtn";
+import SubmitBtn from "../components/SubmitBtn";
+import PagesHeader from "../components/PagesHeader";
+import { useNavigate } from "react-router-dom";
+import { useVerifyPost } from "../store/verifyPostContentStore";
+import { usePostData } from "../store/postDataStore";
+import { url } from "../store/ref";
+import React from "react";
+import { useLoginInfoStore } from "../store/loginInfoStore";
+
 
 function PostWritePage() {
   const navigate = useNavigate();
@@ -25,8 +26,7 @@ function PostWritePage() {
   } = useVerifyPost();
   const { setNewPostId } = usePostData();
   const { userInfo } = useLoginInfoStore();
-  const regionFirstName = localStorage.getItem('regionFirstName');
-  const RegionFirstName = regionFirstName ? regionFirstName.slice(0, 2) : null;
+  const RegionFirstName = localStorage.getItem('regionFirstName').slice(0, 2);
   const userId = userInfo.userid;
   const username = userInfo.username;
   console.log('현재 유저아이디', userId);

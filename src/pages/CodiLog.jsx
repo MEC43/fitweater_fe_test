@@ -61,6 +61,7 @@ const CodiLog = () => {
     }
   };
 
+
   const fetchLog = (page, reset = false) => {
     if (!userInfo) { return };
 
@@ -94,6 +95,21 @@ const CodiLog = () => {
     getToday();
 
   }, [codiView]);
+
+
+
+  useEffect(() => {
+    if (userInfo) {  // userInfo가 유효한지 확인
+      setPage(0); // 페이지 번호 초기화
+      fetchLog(0, true); // 초기 데이터 가져오기, reset 파라미터를 true로 설정
+    } else {
+      console.error('User info is not available');
+    }
+
+    getToday();
+
+  }, []);
+
 
 
   useEffect(() => {
@@ -353,3 +369,4 @@ const CodiLog = () => {
 };
 
 export default CodiLog;
+

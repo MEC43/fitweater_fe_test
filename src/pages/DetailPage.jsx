@@ -23,7 +23,6 @@ function DetailPage() {
         setPostDetail(data);
         setLikes(data.likeCount);
         setOriginImgPath(data.image);
-        console.log(postDetail);
       }
     } catch (error) {
       console.error('상세페이지 오류', error);
@@ -32,6 +31,7 @@ function DetailPage() {
 
   useEffect(() => {
     fetchPostDetail();
+    console.log('포스트 상세내용', postDetail);
   }, []);
 
   return (
