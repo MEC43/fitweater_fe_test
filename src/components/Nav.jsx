@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import style from '../css/Nav.module.css';
 import { url } from '../store/ref';
-import { useLoginInfoStore } from '../store/loginInfoStore'; //유저정보 import
-import { jwtDecode } from 'jwt-decode';
+import { useLoginInfoStore } from '../store/loginInfoStore';
 
 const Nav = ({ navOpen, setNavOpen }) => {
   const navigate = useNavigate();
-  const { userInfo, setUserInfoAll } = useLoginInfoStore();
+  const { userInfo, setUserInfoAll, loginWithToken, logout } =
+    useLoginInfoStore();
   const [token, setToken] = useState(localStorage.getItem('token')); //해석 안된 토큰
   const [loginRoute, setLoginRoute] = useState(''); //로그인방식 저장 <- 카카오:kakao /일반:ourweb /로그인 전: ''
+  const [navUsername, setNavUsername] = useState(userInfo.username);
 
   useEffect(() => {
     console.log('---Nav userInfo---', userInfo); // 확인용..
@@ -21,6 +22,7 @@ const Nav = ({ navOpen, setNavOpen }) => {
       if (token.includes('.')) {
         // 일반 로그인일때
         setLoginRoute('ourweb');
+        loginWithToken(token);
       } else {
         setLoginRoute('kakao'); //카카오 로그인일때
       }
@@ -36,26 +38,6 @@ const Nav = ({ navOpen, setNavOpen }) => {
   useEffect(() => {
     console.log('----loginRoute---', loginRoute);
   }, [loginRoute]);
-
-  // 로그아웃
-  const logout = async () => {
-    const response = await fetch(`${url}/logout`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-    });
-
-    if (response.ok) {
-      document.cookie =
-        'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //쿠키 만료 시점을 과거로 설정하여 덮어쓰는 방식으로 삭제
-      localStorage.removeItem('token');
-      setUserInfoAll(null, null, null); // 사용자 정보 초기화
-      // navigate("/");
-      window.location.href = '/';
-    } else {
-      console.error('Failed to logout');
-    }
-  };
 
   const kakaoLogOut = async () => {
     const response = await fetch(`https://kapi.kakao.com/v1/user/logout`, {
@@ -122,22 +104,25 @@ const Nav = ({ navOpen, setNavOpen }) => {
         {loginRoute ? (
           <Link to={'/mypage'} className={`${style.btnUser} ${style.btnNav}`}>
             <div className={style.profileImg}>
-              {userInfo.userprofile ? (
-                <img
-                  className={style.MyProfileImg}
-                  src={
-                    userInfo.userprofil?.startsWith('http://t1.kakaocdn.net') ||
-                    userInfo.userprofil?.startsWith('http://k.kakaocdn.net/')
+              <img
+                className={style.MyProfileImg}
+                src={
+                  userInfo.userprofile
+                    ? typeof userInfo.userprofile === 'string' &&
+                      (userInfo.userprofile.startsWith(
+                        'http://t1.kakaocdn.net'
+                      ) ||
+                        userInfo.userprofile.startsWith(
+                          'http://k.kakaocdn.net/'
+                        ))
                       ? userInfo.userprofile
-                      : `${url}${userInfo.userprofile}`
-                  }
-                  alt="userprofile"
-                />
-              ) : (
-                <img src="img/icons/common/noProfile.svg" alt="icon" />
-              )}
+                      : `${url}/${userInfo.userprofile}`
+                    : `/img/default/man_photo.svg`
+                }
+                alt="userprofile"
+              />
             </div>
-            <span className="fontTitleS">{userInfo.username}</span>
+            <span className="fontTitleS">{navUsername}</span>
           </Link>
         ) : (
           <div className={style.accountBtns}>
