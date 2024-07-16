@@ -6,7 +6,7 @@ import { useLoginInfoStore } from '../store/loginInfoStore';
 
 const Nav = ({ navOpen, setNavOpen }) => {
   const navigate = useNavigate();
-  const { userInfo, setUserInfoAll, loginWithToken, logout } =
+  const { userInfo, setUserInfoAll, loginWithToken, logout, fetchUserInfo } =
     useLoginInfoStore();
   const [token, setToken] = useState(localStorage.getItem('token')); //해석 안된 토큰
   const [loginRoute, setLoginRoute] = useState(''); //로그인방식 저장 <- 카카오:kakao /일반:ourweb /로그인 전: ''
@@ -14,6 +14,7 @@ const Nav = ({ navOpen, setNavOpen }) => {
 
   useEffect(() => {
     console.log('---Nav userInfo---', userInfo); // 확인용..
+    setNavUsername(userInfo.username);
   }, [navOpen]);
 
   const checkLoginRoute = (token) => {
@@ -33,6 +34,7 @@ const Nav = ({ navOpen, setNavOpen }) => {
 
   useEffect(() => {
     checkLoginRoute(token);
+    fetchUserInfo(navigate);
   }, [token]);
 
   useEffect(() => {

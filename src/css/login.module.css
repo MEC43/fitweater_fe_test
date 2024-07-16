@@ -3,16 +3,18 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .logo {
   display: flex;
   justify-content: center;
-  margin: 70px 0 60px 0;
+  padding: 5rem 6rem;
 }
 
 .logo img {
-  width: 40%;
+  width: 100%;
+  min-width: 300px;
   height: auto;
 }
 
@@ -41,7 +43,7 @@
   padding: 16px;
   margin-top: 8px;
   background-color: white;
-  border: 1px solid #e2e0c0;
+  border: 1px solid var(--grey-200);
 }
 
 .inputWrap:focus-within {

@@ -1,7 +1,7 @@
-import style from "../css/WeatherTalk.module.css";
-import { useEffect, useState } from "react";
-import useMatchingData from "../hooks/matchingData";
-import { url } from "../store/ref";
+import style from '../css/WeatherTalk.module.css';
+import { useEffect, useState } from 'react';
+import useMatchingData from '../hooks/matchingData';
+import { url } from '../store/ref';
 
 const WeatherTalk = ({ setMatchingUrl }) => {
   const {
@@ -18,16 +18,16 @@ const WeatherTalk = ({ setMatchingUrl }) => {
     setChatData,
   } = useMatchingData();
 
-  const [weatherChat, setWeatherChat] = useState("");
+  const [weatherChat, setWeatherChat] = useState('');
 
   useEffect(() => {
     const postWeatherData = async () => {
       if (dataLoaded) {
         try {
-          const response = await fetch(`${url}/talkBox`, {
-            method: "POST",
+          const response = await fetch(`${url}/main/talkBox`, {
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               temperature: temperature,
@@ -42,8 +42,8 @@ const WeatherTalk = ({ setMatchingUrl }) => {
           const data = await response.json();
           setWeatherChat(data.response.content);
         } catch (error) {
-          console.error("Failed to fetch:", error);
-          setWeatherChat("Failed to fetch data");
+          console.error('Failed to fetch:', error);
+          setWeatherChat('Failed to fetch data');
         }
       }
     };
@@ -64,9 +64,9 @@ const WeatherTalk = ({ setMatchingUrl }) => {
       const outerUrl = matchingWord.outers.map((word) => clothes.outers[word]);
 
       const newMatchingUrl = {
-        tops: topUrl[0] || "",
-        bottoms: bottomUrl[0] || "",
-        outers: outerUrl[0] || "",
+        tops: topUrl[0] || '',
+        bottoms: bottomUrl[0] || '',
+        outers: outerUrl[0] || '',
       };
       setMatchingUrl(newMatchingUrl);
     }

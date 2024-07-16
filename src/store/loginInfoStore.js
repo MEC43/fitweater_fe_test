@@ -3,6 +3,8 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { jwtDecode } from 'jwt-decode';
 import { url } from './ref';
 
+let persistedStore = null
+
 const useLoginInfoStore = create(persist((set, get) => ({
   userInfo: {
     userid: null,
@@ -39,6 +41,7 @@ const useLoginInfoStore = create(persist((set, get) => ({
   setUsergender: (info) => set((state) => ({
     userInfo: { ...state.userInfo, usergender: info },
   })),
+  isLoggedIn: false,
 
   // 새로운 함수들
   setToken: (token) => set({ token }),
@@ -52,6 +55,7 @@ const useLoginInfoStore = create(persist((set, get) => ({
         console.log('디코딩토큰', decodedToken);
         set({
           token,
+          isLoggedIn: true,
           userInfo: {
             userid: decodedToken.userid,
             username: decodedToken.username,
@@ -68,7 +72,10 @@ const useLoginInfoStore = create(persist((set, get) => ({
       try {
         //카카오 로그인
         await get().getUserData(token);
-        set({ token });
+        set({
+          token,
+          isLoggedIn: true,
+        });
         document.cookie = `token=${token}; path=/;`;//쿠키에도 토큰 저장!!
         console.log("카카오 로그인으로 분류됨");
       } catch (err) {
@@ -104,7 +111,7 @@ const useLoginInfoStore = create(persist((set, get) => ({
   },
   registerKakaoUser: async (userid, username, profile_image) => {
     try {
-      const response = await fetch(`${url}/kakao-register`, {
+      const response = await fetch(`${url}/user/kakao-register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userid, username, profile_image }),
@@ -126,17 +133,23 @@ const useLoginInfoStore = create(persist((set, get) => ({
   },
   //로그아웃
   logout: async () => {
-    const response = await fetch(`${url}/logout`, {
+    const response = await fetch(`${url}/user/logout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
     });
 
     if (response.ok) {
+      set({ isLoggedIn: false })
       document.cookie =
         'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; //쿠키 만료 시점을 과거로 설정하여 덮어쓰는 방식으로 삭제
       localStorage.removeItem('token');
+      // Zustand의 persist 객체에 직접 접근하여 상태 제거
       localStorage.removeItem('login-info-storage');
+      // 스토어 재설정
+      if (persistedStore && persistedStore.persist) {
+        persistedStore.persist.clearStorage()
+      }
       get().setUserInfoAll(null, null, null); // 사용자 정보 초기화
       // navigate("/");
       window.location.href = '/';
@@ -182,9 +195,14 @@ const useLoginInfoStore = create(persist((set, get) => ({
   {
     name: 'login-info-storage',
     storage: createJSONStorage(() => localStorage),
+    // 로그인 상태일 때만 persist
+    partialize: (state) => (state.isLoggedIn ? state : { isLoggedIn: false }),
 
   }
 )
-);
+)
+
+// 스토어 인스턴스 저장
+persistedStore = useLoginInfoStore
 
 export { useLoginInfoStore };

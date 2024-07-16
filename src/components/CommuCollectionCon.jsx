@@ -33,7 +33,7 @@ function CommuCollectionCon() {
   const fecthTalkData = async () => {
     try {
       const response = await fetch(
-        `${url}/mypage/talk/${userId}?page=${currentPage}`,
+        `${url}/collection/talk/${userId}?page=${currentPage}`,
         {
           credentials: 'include',
         }

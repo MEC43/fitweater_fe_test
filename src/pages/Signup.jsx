@@ -1,53 +1,53 @@
-import React, { useState } from "react";
-import style from "../css/signup.module.css";
-import { url } from "../store/ref";
+import React, { useState } from 'react';
+import style from '../css/signup.module.css';
+import { url } from '../store/ref';
 
-import TermsModal from "../components/TermsModal"; //이용약관 모듈창
-import HeaderAccount from "../components/HeaderAccount"; //헤더
+import TermsModal from '../components/TermsModal'; //이용약관 모듈창
+import HeaderAccount from '../components/HeaderAccount'; //헤더
 
 const Signup = () => {
-  const [userid, setUserid] = useState(""); //아이디
-  const [username, setUsername] = useState(""); //닉네임
-  const [password, setPassword] = useState(""); //비밀번호
-  const [pdcon, setPdcon] = useState(""); //비밀번호 확인
-  const [gender, setGender] = useState(""); //성별
-  const [message1, setMessage1] = useState(""); // 아이디 메시지
-  const [message2, setMessage2] = useState(""); // 비밀번호 메시지
-  const [message3, setMessage3] = useState(""); // 비밀번호 확인 메시지
-  const [message4, setMessage4] = useState(""); // 성별 메시지
-  const [message5, setMessage5] = useState(""); // 아이디 중복 확인 메시지
-  const [message6, setMessage6] = useState(""); // 닉네임 중복 확인 메시지
+  const [userid, setUserid] = useState(''); //아이디
+  const [username, setUsername] = useState(''); //닉네임
+  const [password, setPassword] = useState(''); //비밀번호
+  const [pdcon, setPdcon] = useState(''); //비밀번호 확인
+  const [gender, setGender] = useState(''); //성별
+  const [message1, setMessage1] = useState(''); // 아이디 메시지
+  const [message2, setMessage2] = useState(''); // 비밀번호 메시지
+  const [message3, setMessage3] = useState(''); // 비밀번호 확인 메시지
+  const [message4, setMessage4] = useState(''); // 성별 메시지
+  const [message5, setMessage5] = useState(''); // 아이디 중복 확인 메시지
+  const [message6, setMessage6] = useState(''); // 닉네임 중복 확인 메시지
   const [showTerms, setShowTerms] = useState(false); // 상태 추가
 
   // 중복확인 함수 : 아이디
   const checkDuplicateId = async () => {
-    const response = await fetch(`${url}/check-duplicate-id`, {
-      method: "POST",
+    const response = await fetch(`${url}/user/check-duplicate-id`, {
+      method: 'POST',
       body: JSON.stringify({ userid }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.json();
     if (response.status !== 200) {
       setMessage5(data.message);
       return false;
     }
-    setMessage5("사용 가능한 아이디입니다.");
+    setMessage5('사용 가능한 아이디입니다.');
     return true;
   };
 
   // 중복확인 함수 : 닉네임
   const checkDuplicateUsername = async () => {
-    const response = await fetch(`${url}/check-duplicate-username`, {
-      method: "POST",
+    const response = await fetch(`${url}/user/check-duplicate-username`, {
+      method: 'POST',
       body: JSON.stringify({ username }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.json();
     if (response.status !== 200) {
       setMessage6(data.message);
       return false;
     }
-    setMessage6("사용 가능한 닉네임입니다.");
+    setMessage6('사용 가능한 닉네임입니다.');
     return true;
   };
 
@@ -56,28 +56,28 @@ const Signup = () => {
     e.preventDefault();
 
     if (!/^[a-zA-Z][a-zA-Z0-9]{3,}$/.test(userid)) {
-      setMessage1("아이디는 4자 이상이어야 하며 영어로 시작해야 합니다.");
+      setMessage1('아이디는 4자 이상이어야 하며 영어로 시작해야 합니다.');
       return;
     } else {
-      setMessage1("");
+      setMessage1('');
     }
     if (password.length < 4) {
-      setMessage2("비밀번호는 4자 이상이어야 합니다.");
+      setMessage2('비밀번호는 4자 이상이어야 합니다.');
       return;
     } else {
-      setMessage2("");
+      setMessage2('');
     }
     if (password !== pdcon) {
-      setMessage3("비밀번호가 같지 않습니다.");
+      setMessage3('비밀번호가 같지 않습니다.');
       return;
     } else {
-      setMessage3("");
+      setMessage3('');
     }
     if (!gender) {
-      setMessage4("성별을 선택해주세요.");
+      setMessage4('성별을 선택해주세요.');
       return;
     } else {
-      setMessage4("");
+      setMessage4('');
     }
 
     const isIdDuplicateFree = await checkDuplicateId();
@@ -85,15 +85,15 @@ const Signup = () => {
     if (!isIdDuplicateFree || !isUsernameDuplicateFree) return;
 
     // 백엔드로 POST 요청 및 응답
-    const response = await fetch(`${url}/register`, {
-      method: "POST",
+    const response = await fetch(`${url}/user/register`, {
+      method: 'POST',
       body: JSON.stringify({ userid, username, password, gender }),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     });
     if (response.status === 200) {
       setShowTerms(true); // 회원가입 성공 시 약관 모달을 호출
     } else {
-      alert("회원가입에 실패했습니다.");
+      alert('회원가입에 실패했습니다.');
     }
   };
 
@@ -123,9 +123,9 @@ const Signup = () => {
                 중복확인
               </button>
             </div>
-            <span className={style.errorMessage}>{message1}</span>{" "}
+            <span className={style.errorMessage}>{message1}</span>{' '}
             {/* 아이디 유효성 검사 메시지 */}
-            <span className={style.errorMessage}>{message5}</span>{" "}
+            <span className={style.errorMessage}>{message5}</span>{' '}
             {/* 아이디 중복 확인 메시지 */}
           </div>
           <div className={`fontTitleXL ${style.inputTitle}`}>닉네임</div>
@@ -148,7 +148,7 @@ const Signup = () => {
                 중복확인
               </button>
             </div>
-            <span className={style.errorMessage}>{message6}</span>{" "}
+            <span className={style.errorMessage}>{message6}</span>{' '}
             {/* 닉네임 중복 확인 메시지 */}
           </div>
           <div className={`fontTitleXL ${style.inputTitle}`}>비밀번호</div>
@@ -164,7 +164,7 @@ const Signup = () => {
                 }}
               />
             </div>
-            <span className={style.errorMessage}>{message2}</span>{" "}
+            <span className={style.errorMessage}>{message2}</span>{' '}
             {/* 비밀번호 유효성 검사 메시지 */}
           </div>
           <div className={`fontTitleXL ${style.inputTitle}`}>비밀번호 확인</div>
@@ -180,7 +180,7 @@ const Signup = () => {
                 }}
               />
             </div>
-            <span className={style.errorMessage}>{message3}</span>{" "}
+            <span className={style.errorMessage}>{message3}</span>{' '}
             {/* 비밀번호 확인 메시지 */}
           </div>
           {/* 성별 */}
@@ -189,23 +189,23 @@ const Signup = () => {
             <button
               type="button"
               className={`fontBodyM ${style.gender_button} ${
-                gender === "male" ? style.selected : ""
+                gender === 'male' ? style.selected : ''
               }`}
-              onClick={() => setGender("male")}
+              onClick={() => setGender('male')}
             >
               남성
             </button>
             <button
               type="button"
               className={`fontBodyM ${style.gender_button} ${
-                gender === "female" ? style.selected : ""
+                gender === 'female' ? style.selected : ''
               }`}
-              onClick={() => setGender("female")}
+              onClick={() => setGender('female')}
             >
               여성
             </button>
           </div>
-          <span className={style.errorMessage}>{message4}</span>{" "}
+          <span className={style.errorMessage}>{message4}</span>{' '}
           {/* 성별 선택 메시지 */}
           <button type="submit" className={`fontBodyM ${style.bottomButton}`}>
             다음으로

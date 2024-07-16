@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import style from "../css/MyStyle.module.css";
-import HeaderMyStyle from "../components/HeaderMyStyle.jsx"; //헤더
-import { Link, Navigate } from "react-router-dom";
+import style from '../css/MyStyle.module.css';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import HeaderMyStyle from '../components/HeaderMyStyle.jsx'; //헤더
 
 function MyStyle() {
   const [selectedButtons, setSelectedButtons] = useState({
@@ -32,7 +32,7 @@ function MyStyle() {
         <button
           key={item} // item이 티셔츠라면 key는 티셔츠가 됨
           className={`fontBodyM ${
-            selectedButtons[category].includes(item) ? style.selected : ""
+            selectedButtons[category].includes(item) ? style.selected : ''
           }`} // category에 item이 포함되어 있는지 확인, 포함되어있으면 style.selected 클래스에 추가, 아니면 빈문자열 추가
           onClick={() => handleButtonClick(category, item)}
         >
@@ -45,9 +45,9 @@ function MyStyle() {
   const handleSave = () => {
     // 로컬 스토리지에 저장
     const button_value_save = JSON.stringify(selectedButtons);
-    localStorage.setItem("selectedButtons", button_value_save);
-    console.log("저장된 데이터:", button_value_save);
-    alert("선택한 값이 저장되었습니다!");
+    localStorage.setItem('selectedButtons', button_value_save);
+    console.log('저장된 데이터:', button_value_save);
+    alert('선택한 값이 저장되었습니다!');
   };
 
   return (
@@ -67,12 +67,12 @@ function MyStyle() {
         <div className={style.mystyleWrap}>
           <h2 className="fontTitleL">상의</h2>
           <div className={`fontBodyM ${style.button}`}>
-            {renderButtons("tops", [
-              "티셔츠",
-              "맨투맨",
-              "니트",
-              "후드티",
-              "셔츠/블라우스",
+            {renderButtons('tops', [
+              '티셔츠',
+              '맨투맨',
+              '니트',
+              '후드티',
+              '셔츠/블라우스',
             ])}
           </div>
         </div>
@@ -80,13 +80,13 @@ function MyStyle() {
         <div className={style.mystyleWrap}>
           <h2 className="fontTitleL">하의</h2>
           <div className={`fontBodyM ${style.button}`}>
-            {renderButtons("bottoms", [
-              "청바지",
-              "슬랙스",
-              "트레이닝 바지",
-              "면바지",
-              "롱스커트",
-              "미니스커트",
+            {renderButtons('bottoms', [
+              '청바지',
+              '슬랙스',
+              '트레이닝 바지',
+              '면바지',
+              '롱스커트',
+              '미니스커트',
             ])}
           </div>
         </div>
@@ -94,16 +94,14 @@ function MyStyle() {
         <div className={style.mystyleWrap}>
           <h2 className="fontTitleL">아우터</h2>
           <div className={`fontBodyM ${style.button}`}>
-            {renderButtons("outers", [
-              "가디건",
-              "자켓",
-              "코트",
-              "집업",
-              "롱패딩",
-              "숏패딩",
-              "조끼",
-              "롱스커트",
-              "미니스커트",
+            {renderButtons('outers', [
+              '가디건',
+              '자켓',
+              '코트',
+              '집업',
+              '롱패딩',
+              '숏패딩',
+              '조끼',
             ])}
           </div>
         </div>
@@ -111,16 +109,17 @@ function MyStyle() {
         <div className={style.mystyleWrap}>
           <h2 className="fontTitleL">기타(선택)</h2>
           <div className={`fontBodyM ${style.button}`}>
-            {renderButtons("dresses", ["원피스"])}
+            {renderButtons('dresses', ['원피스'])}
           </div>
         </div>
 
-        <button
+        <Link
+          to="/codimain"
           className={`fontBodyM ${style.bottomButton}`}
           onClick={handleSave}
         >
-          <Link to="/codimain">저장하기</Link>
-        </button>
+          저장하기
+        </Link>
       </div>
     </>
   );

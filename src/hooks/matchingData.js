@@ -134,7 +134,7 @@ const useMatchingData = (selectedTemp, selectedMode) => {
         }
         console.log("매칭---", gender);
         try {
-          const response = await fetch(`${url}/codiTalkBox`, {
+          const response = await fetch(`${url}/main/codiTalkBox`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

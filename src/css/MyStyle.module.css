@@ -1,5 +1,5 @@
 .page {
-  padding: 0 20px 15px 20px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
 .mystyleTitle {
   font-size: 16px;
   color: #262626;
-  margin: 30px 0 17px 0;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -25,11 +25,11 @@
 
 .mystyleWrap {
   background-color: white;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 1.5rem;
+  border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  margin-bottom: 20px;
+  width: calc(100% - 2rem);
+  margin-bottom: 2rem;
   align-items: center;
 }
 
@@ -37,8 +37,8 @@
   flex: 1;
   margin: 5px;
   padding: 8px 18px;
-  border: 1px solid #e2e0c0;
-  border-radius: 30px;
+  border: 1px solid var(--grey-200);
+  border-radius: 5rem;
   background-color: #fff;
   color: #262626;
   cursor: pointer;
@@ -54,14 +54,13 @@
 }
 
 .page .bottomButton {
-  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  width: calc(100% - 2rem);
   border: none;
-  font-weight: 700;
   background-color: #376dd2;
-  border-radius: 64px;
+  border-radius: 5rem;
   color: white;
-  margin: 40px 0 16px 0;
-  cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

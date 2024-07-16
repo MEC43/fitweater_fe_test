@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import style from "../css/Codi.module.css";
-import ActionSheet from "./ActionSheet";
-import { url } from "../store/ref";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import style from '../css/Codi.module.css';
+import ActionSheet from './ActionSheet';
+import { url } from '../store/ref';
 
-import { useLoginInfoStore } from "../store/loginInfoStore"; //유저정보 import
+import { useLoginInfoStore } from '../store/loginInfoStore'; //유저정보 import
 
 const CodiLogBoxsMain = () => {
   // useState for ActionSheet
-  const [today, setToday] = useState(""); //오늘날짜
-  const [todayText, setTodayText] = useState(""); // 오늘날짜 화면출력용
+  const [today, setToday] = useState(''); //오늘날짜
+  const [todayText, setTodayText] = useState(''); // 오늘날짜 화면출력용
   const [canEdit, setCanEdit] = useState(false); //수정 가능한지 아닌지
   const [actionSheetActive, setActionSheetActive] = useState(false);
   const [tags, setTags] = useState([]);
-  const [userid, setUserid] = useState("");
+  const [userid, setUserid] = useState('');
 
   // 로컬스토리지에서 받아올 오늘 날씨 정보
-  const [minTemp, setMinTemp] = useState("");
-  const [maxTemp, setMaxTemp] = useState("");
-  const [sky, setSky] = useState("");
+  const [minTemp, setMinTemp] = useState('');
+  const [maxTemp, setMaxTemp] = useState('');
+  const [sky, setSky] = useState('');
 
-  const [logToday, setLogToday] = useState(""); //받아온 오늘 기록
-  const [codiLogId, setCodiLogId] = useState(""); //코디로그 고유 _id
+  const [logToday, setLogToday] = useState(''); //받아온 오늘 기록
+  const [codiLogId, setCodiLogId] = useState(''); //코디로그 고유 _id
   const { userInfo } = useLoginInfoStore();
 
-  const [similarLog, setSimilarLog] = useState(""); //비슷한 날씨의 과거 기록 data
-  const [similarLogDate, setSimilarLogDate] = useState(""); //비슷한 날씨의 과거 기록- 날짜 화면 출력용
-  const [similarLogTags, setSimilarLogTags] = useState([""]); //비슷한 날씨의 과거 기록 -tags
+  const [similarLog, setSimilarLog] = useState(''); //비슷한 날씨의 과거 기록 data
+  const [similarLogDate, setSimilarLogDate] = useState(''); //비슷한 날씨의 과거 기록- 날짜 화면 출력용
+  const [similarLogTags, setSimilarLogTags] = useState(['']); //비슷한 날씨의 과거 기록 -tags
 
   useEffect(() => {
     if (userInfo) {
@@ -39,25 +39,25 @@ const CodiLogBoxsMain = () => {
     // 오늘 날짜 저장
     const currentDate = new Date();
     const options = {
-      year: "numeric",
-      month: "2-digit", //2자리 맞추도록
-      day: "2-digit",
+      year: 'numeric',
+      month: '2-digit', //2자리 맞추도록
+      day: '2-digit',
     };
     const today = currentDate
-      .toLocaleString("ko-KR", options)
-      .replace(/\./g, "")
-      .replace(/\ /g, "-"); //0000-00-00
+      .toLocaleString('ko-KR', options)
+      .replace(/\./g, '')
+      .replace(/\ /g, '-'); //0000-00-00
     // console.log('today', today);
     setToday(today);
     setTodayText(
-      `${today.split("-")[0]}년  ${today.split("-")[1]}월 ${
-        today.split("-")[2]
+      `${today.split('-')[0]}년  ${today.split('-')[1]}월 ${
+        today.split('-')[2]
       }일`
     );
 
-    const storedMinTemp = localStorage.getItem("minTemp");
-    const storedMaxTemp = localStorage.getItem("maxTemp");
-    const storedSky = localStorage.getItem("weatherText");
+    const storedMinTemp = localStorage.getItem('minTemp');
+    const storedMaxTemp = localStorage.getItem('maxTemp');
+    const storedSky = localStorage.getItem('weatherText');
 
     if (storedMinTemp) {
       setMinTemp(storedMinTemp);
@@ -85,21 +85,21 @@ const CodiLogBoxsMain = () => {
   useEffect(() => {
     if (userid && sky && minTemp && maxTemp) {
       fetch(
-        `${url}/codiLogSimilar/${maxTemp}/${minTemp}/${sky}/${userid}/${today}`
+        `${url}/codi/codiLogSimilar/${maxTemp}/${minTemp}/${sky}/${userid}/${today}`
       ) //
         .then((res) => res.json()) //
         .then((similarData) => {
           if (similarData) {
             setSimilarLog(similarData);
             setSimilarLogDate(
-              `${similarData.codiDate.split("-")[0]}년  ${
-                similarData.codiDate.split("-")[1]
-              }월 ${similarData.codiDate.split("-")[2]}일`
+              `${similarData.codiDate.split('-')[0]}년  ${
+                similarData.codiDate.split('-')[1]
+              }월 ${similarData.codiDate.split('-')[2]}일`
             );
             setSimilarLogTags(similarData.tag);
-            console.log("=====codiLogSimilar====", similarData);
+            console.log('=====codiLogSimilar====', similarData);
           } else {
-            console.log("=====similarData 없음====");
+            console.log('=====similarData 없음====');
           }
         });
     }
@@ -108,17 +108,17 @@ const CodiLogBoxsMain = () => {
   // 오늘 기록 가져오기
   useEffect(() => {
     if (today && userid) {
-      fetch(`${url}/codiLogToday/${today}/${userid}`) //get요청 보냄
+      fetch(`${url}/codi/codiLogToday/${today}/${userid}`) //get요청 보냄
         .then((res) => res.json())
         .then((data) => {
           if (data) {
             setLogToday(data);
             setTags(data.tag);
             setCodiLogId(data._id);
-            console.log("---선택 기록 setLogToday 전달 성공----", data);
+            console.log('---선택 기록 setLogToday 전달 성공----', data);
           } else {
-            setLogToday("");
-            console.log("=====codiLogToday 없음====");
+            setLogToday('');
+            console.log('=====codiLogToday 없음====');
           }
         });
     }
@@ -141,7 +141,7 @@ const CodiLogBoxsMain = () => {
               alt="dot"
             />
           ) : (
-            ""
+            ''
           )}
         </div>
 
@@ -153,7 +153,7 @@ const CodiLogBoxsMain = () => {
               </span>
               <img src="img/icons/common/12devider.svg" alt="12devider" />
               <span className={`fontTitleS ${style.weather}`}>
-                {" "}
+                {' '}
                 {similarLog.maxTemp}°/ {similarLog.minTemp}°
               </span>
               {/* <img src="img/icons/common/12devider.svg" alt="12devider" /> */}
@@ -203,7 +203,7 @@ const CodiLogBoxsMain = () => {
               alt="dot"
             />
           ) : (
-            ""
+            ''
           )}
         </div>
 
@@ -211,7 +211,7 @@ const CodiLogBoxsMain = () => {
           <span className={`fontTitleS ${style.date}`}>{todayText}</span>
           <img src="img/icons/common/12devider.svg" alt="12devider" />
           <span className={`fontTitleS ${style.weather}`}>
-            {" "}
+            {' '}
             {maxTemp}°/ {minTemp}°
           </span>
           {/* <img src="img/icons/common/12devider.svg" alt="12devider" /> */}
@@ -238,7 +238,7 @@ const CodiLogBoxsMain = () => {
               <img src="img/icons/common/alertG600.svg" alt="alert" />
               <span className="fontTitleM">오늘 코디 기록을 안하셨어요 !</span>
             </div>
-            <Link to={"/codiWrite"} className={`fontTitleM ${style.btnWide}`}>
+            <Link to={'/codiWrite'} className={`fontTitleM ${style.btnWide}`}>
               오늘 코디 기록하기
             </Link>
           </>

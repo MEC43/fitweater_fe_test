@@ -15,7 +15,7 @@ const LoginPage = () => {
 
     //백엔드로 POST 요청 및 응답
     try {
-      const response = await fetch(`${url}/login`, {
+      const response = await fetch(`${url}/user/login`, {
         method: 'POST',
         body: JSON.stringify({ userid, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -47,9 +47,9 @@ const LoginPage = () => {
 
   return (
     <div className={`mw ${style.page}`}>
-      <div className={style.logo} style={{ cursor: 'pointer' }}>
+      <Link to="/" className={style.logo} style={{ cursor: 'pointer' }}>
         <img src="/img/logo/LogoL.svg" alt="Fit Weather Logo" />
-      </div>
+      </Link>
       <div className={`fontHead2 ${style.titleWrap}`}>로그인</div>
 
       <form onSubmit={login}>
@@ -97,7 +97,7 @@ const LoginPage = () => {
 
       <div className={style.signup}>
         <div className={`fontBodyM ${style.signupMemo}`}>
-          아직 웨더핏 회원이 아니시라면?{' '}
+          아직 핏웨더 회원이 아니시라면?{' '}
           <p className={`fontBodyM ${style.signupButton}`}>
             <Link to="/Signup">회원가입</Link>
           </p>

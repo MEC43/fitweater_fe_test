@@ -124,7 +124,7 @@ function MypageProfileArea() {
 
   // 닉네임 중복 확인 함수
   const checkDuplicateUsername = async () => {
-    const response = await fetch(`${url}/check-duplicate-username`, {
+    const response = await fetch(`${url}/user/check-duplicate-username`, {
       method: 'POST',
       body: JSON.stringify({ username: userInfo.username }),
       headers: { 'Content-Type': 'application/json' },

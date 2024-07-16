@@ -32,7 +32,7 @@ function CommuCollLike() {
   const fetchLikeData = async () => {
     try {
       const response = await fetch(
-        `${url}/mypage/likes/${userId}?page=${currentPage}`,
+        `${url}/collection/likes/${userId}?page=${currentPage}`,
         {
           credentials: 'include',
         }
