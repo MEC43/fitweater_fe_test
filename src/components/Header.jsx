@@ -15,7 +15,6 @@ const Header = () => {
   } = useFetchStore();
   const [regionthirdName, setRegionthirdName] = useState('');
   const [kakaoLoaded, setKakaoLoaded] = useState(false);
-  const [isGeocoderReady, setIsGeocoderReady] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setNavOpen(window.innerWidth >= 909);
@@ -24,23 +23,17 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const loadKakaoMapScript = () => {
-      const script = document.createElement('script');
-      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`;
-      script.async = true;
-      script.onload = () => {
-        window.kakao.maps.load(() => {
-          console.log('Kakao Maps API loaded successfully');
-          setKakaoLoaded(true);
-          setIsGeocoderReady(true);
-        });
-      };
-      script.onerror = (error) => {
-        console.error('카카오Map API 로딩 에러', error);
-      };
-      document.head.appendChild(script);
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`;
+    script.async = true;
+    script.onload = () => {
+      window.kakao.maps.load(() => {
+        console.log('Kakao Maps API loaded successfully');
+        setKakaoLoaded(true);
+      });
     };
-    loadKakaoMapScript();
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
   }, []);
 
   const regionName = useCallback(() => {
@@ -55,41 +48,40 @@ const Header = () => {
       );
       return;
     }
-    if (isGeocoderReady) {
-      const geocoder = new window.kakao.maps.services.Geocoder();
-      const coords = new window.kakao.maps.LatLng(
-        location.latitude,
-        location.longitude
-      );
 
-      geocoder.coord2RegionCode(
-        coords.getLng(),
-        coords.getLat(),
-        (result, status) => {
-          if (status === window.kakao.maps.services.Status.OK) {
-            const region =
-              result.find((item) => item.region_type === 'H') || result[0];
-            setRegionFirstName(region.region_1depth_name);
-            setRegionSecondName(region.region_2depth_name);
-            setRegionthirdName(region.region_3depth_name);
+    const geocoder = new window.kakao.maps.services.Geocoder();
+    const coords = new window.kakao.maps.LatLng(
+      location.latitude,
+      location.longitude
+    );
 
-            localStorage.setItem('regionFirstName', region.region_1depth_name);
-            localStorage.setItem('regionSecondName', region.region_2depth_name);
-            localStorage.setItem('regionthirdName', region.region_3depth_name);
+    geocoder.coord2RegionCode(
+      coords.getLng(),
+      coords.getLat(),
+      (result, status) => {
+        if (status === window.kakao.maps.services.Status.OK) {
+          const region =
+            result.find((item) => item.region_type === 'H') || result[0];
+          setRegionFirstName(region.region_1depth_name);
+          setRegionSecondName(region.region_2depth_name);
+          setRegionthirdName(region.region_3depth_name);
 
-            console.log(
-              'Region information retrieved:',
-              region.region_1depth_name,
-              region.region_2depth_name,
-              region.region_3depth_name
-            );
-          } else {
-            console.error('Failed to retrieve region information', status);
-          }
+          localStorage.setItem('regionFirstName', region.region_1depth_name);
+          localStorage.setItem('regionSecondName', region.region_2depth_name);
+          localStorage.setItem('regionthirdName', region.region_3depth_name);
+
+          console.log(
+            'Region information retrieved:',
+            region.region_1depth_name,
+            region.region_2depth_name,
+            region.region_3depth_name
+          );
+        } else {
+          console.error('Failed to retrieve region information', status);
         }
-      );
-    }
-  }, [location, setRegionFirstName, setRegionSecondName, isGeocoderReady]);
+      }
+    );
+  }, [location, setRegionFirstName, setRegionSecondName]);
 
   useEffect(() => {
     if (kakaoLoaded) {
