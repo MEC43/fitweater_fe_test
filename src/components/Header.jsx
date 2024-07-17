@@ -24,41 +24,23 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`;
-    script.async = true;
-    script.onload = () => {
-      window.kakao.maps.load(() => {
-        console.log('Kakao Maps API loaded successfully');
-        setKakaoLoaded(true);
-        setIsGeocoderReady(true);
-      });
+    const loadKakaoMapScript = () => {
+      const script = document.createElement('script');
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`;
+      script.async = true;
+      script.onload = () => {
+        window.kakao.maps.load(() => {
+          console.log('Kakao Maps API loaded successfully');
+          setKakaoLoaded(true);
+          setIsGeocoderReady(true);
+        });
+      };
+      script.onerror = (error) => {
+        console.error('카카오Map API 로딩 에러', error);
+      };
+      document.head.appendChild(script);
     };
-    document.head.appendChild(script);
-    return () => document.head.removeChild(script);
-  }, []);
-
-  useEffect(() => {
-    let retryCount = 0;
-    const maxRetries = 10;
-
-    // 카카오 맵 API가 로드되었는지 확인
-    const checkKakaoMap = () => {
-      if (window.kakao && window.kakao.maps) {
-        console.log('카카오맵API 로드됨');
-        setIsGeocoderReady(true);
-      } else {
-        console.log('카카오맵API 로드 실패');
-        if (retryCount < maxRetries) {
-          retryCount++;
-          setTimeout(checkKakaoMap, 100);
-        } else {
-          console.error('카카오맵API 로드 실패: 최대 재시도 횟수 초과');
-        }
-      }
-    };
-
-    checkKakaoMap();
+    loadKakaoMapScript();
   }, []);
 
   const regionName = useCallback(() => {
