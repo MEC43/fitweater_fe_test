@@ -1,8 +1,7 @@
 import "./css/common.css";
 
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
+import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 import IndexPage from "./pages/IndexPage";
 import CommunityPage from "./pages/CommunityPage";

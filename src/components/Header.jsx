@@ -31,6 +31,7 @@ const Header = () => {
       window.kakao.maps.load(() => {
         console.log('Kakao Maps API loaded successfully');
         setKakaoLoaded(true);
+        setIsGeocoderReady(true);
       });
     };
     document.head.appendChild(script);
@@ -38,6 +39,9 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
+    let retryCount = 0;
+    const maxRetries = 10;
+
     // 카카오 맵 API가 로드되었는지 확인
     const checkKakaoMap = () => {
       if (window.kakao && window.kakao.maps) {
@@ -45,7 +49,12 @@ const Header = () => {
         setIsGeocoderReady(true);
       } else {
         console.log('카카오맵API 로드 실패');
-        setTimeout(checkKakaoMap, 100);
+        if (retryCount < maxRetries) {
+          retryCount++;
+          setTimeout(checkKakaoMap, 100);
+        } else {
+          console.error('카카오맵API 로드 실패: 최대 재시도 횟수 초과');
+        }
       }
     };
 
