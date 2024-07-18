@@ -40,7 +40,9 @@ const WeatherTalk = ({ setMatchingUrl }) => {
           });
 
           const data = await response.json();
-          setWeatherChat(data.response.content);
+          // console.log('코히어답변', response);
+          // console.log('코히어답변', data.response.text);
+          setWeatherChat(data.response.text);
         } catch (error) {
           console.error('Failed to fetch:', error);
           setWeatherChat('Failed to fetch data');

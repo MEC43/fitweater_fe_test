@@ -154,7 +154,9 @@ const useMatchingData = (selectedTemp, selectedMode) => {
           });
 
           const data = await response.json();
-          setChatData(data.response.content);
+          // console.log('코히어답변-코디', response);
+          // console.log('코히어답변-코디', data.response.text);
+          setChatData(data.response.text);
           // console.log(chatData);
         } catch (error) {
           console.error("Failed to fetch:", error);
