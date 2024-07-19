@@ -11,7 +11,7 @@ function PagesHeader({ title, clickBack }) {
 
   const goBack = () => {
     if (referre === 'edit' || referre === 'cmplt') {
-      navigate('/community');
+      window.location = '/community';
     } else if (referre === 'clctn') {
       navigate('/mypage');
     } else {
