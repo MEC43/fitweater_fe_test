@@ -83,9 +83,14 @@ input:checked + .slider:before {
   align-items: center;
   gap: 10px;
   overflow: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
   max-height: 0;
   opacity: 0;
   transition: max-height 0.8s, opacity 0.4s;
+}
+.filterCon::-webkit-scrollbar {
+  display: none; /* WebKit */
 }
 .filter {
   height: 32px;
