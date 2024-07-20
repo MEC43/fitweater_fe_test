@@ -56,7 +56,7 @@
 }
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 24px;
   width: 24px;
   left: 6px;
@@ -80,10 +80,9 @@ input:checked + .slider:before {
   padding: 8px 16px;
   background-color: var(--grey-100);
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 10px;
-  overflow: hidden;
+  overflow: scroll;
   max-height: 0;
   opacity: 0;
   transition: max-height 0.8s, opacity 0.4s;
@@ -98,6 +97,7 @@ input:checked + .slider:before {
   align-content: center;
   cursor: pointer;
   transition: 0.3s;
+  white-space: nowrap;
 }
 .filter:hover {
   background-color: var(--primary-color);

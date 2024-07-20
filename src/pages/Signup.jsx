@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import style from '../css/signup.module.css';
+import { useState } from 'react';
 import { url } from '../store/ref';
 
 import TermsModal from '../components/TermsModal'; //이용약관 모듈창
@@ -21,18 +21,20 @@ const Signup = () => {
 
   // 중복확인 함수 : 아이디
   const checkDuplicateId = async () => {
+    console.log('입력한 아이디', userid);
     const response = await fetch(`${url}/user/check-duplicate-id`, {
       method: 'POST',
       body: JSON.stringify({ userid }),
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.json();
-    if (response.status !== 200) {
+    if (response.ok) {
+      setMessage5(data.message);
+      return true;
+    } else {
       setMessage5(data.message);
       return false;
     }
-    setMessage5('사용 가능한 아이디입니다.');
-    return true;
   };
 
   // 중복확인 함수 : 닉네임
@@ -43,12 +45,13 @@ const Signup = () => {
       headers: { 'Content-Type': 'application/json' },
     });
     const data = await response.json();
-    if (response.status !== 200) {
+    if (response.ok) {
+      setMessage6(data.message);
+      return true;
+    } else {
       setMessage6(data.message);
       return false;
     }
-    setMessage6('사용 가능한 닉네임입니다.');
-    return true;
   };
 
   // 회원가입 기능 함수

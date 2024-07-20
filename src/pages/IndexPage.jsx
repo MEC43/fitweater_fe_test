@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import Header from "../components/Header";
-import PresentWeather from "../components/PresentWeather";
-import WeatherTalk from "../components/WeatherTalk";
-import Avatar from "../components/Avatar";
-import Hours from "../components/Hours";
-import Weekly from "../components/Weekly";
-import Footer from "../components/Footer";
+import Header from '../components/Header';
+import PresentWeather from '../components/PresentWeather';
+import WeatherTalk from '../components/WeatherTalk';
+import Avatar from '../components/Avatar';
+import Hours from '../components/Hours';
+import Weekly from '../components/Weekly';
+import Footer from '../components/Footer';
 
-import bgStyle from "../css/MainWeatherBG.module.css";
-import MainWeatherBG from "../components/MainWeatherBG";
+import bgStyle from '../css/MainWeatherBG.module.css';
+import MainWeatherBG from '../components/MainWeatherBG';
 
 const IndexPage = () => {
   const [matchingUrl, setMatchingUrl] = useState({
-    tops: "",
-    bottoms: "",
-    outers: "",
+    tops: '',
+    bottoms: '',
+    outers: '',
   });
 
   return (
